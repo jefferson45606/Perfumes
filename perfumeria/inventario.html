@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventario - Su Aroma</title>  
+    <link rel="stylesheet" href="tablas.css" />
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <img src="IMG/Su Aroma.png" alt="Logo Su Aroma" class="logo" />
+            <nav>
+                <ul>
+                    <li class="menu-item">VENDER</li>
+                    <li class="menu-item">CATÁLOGO</li>
+                    <li class="menu-item active">INVENTARIO</li>
+                    <li class="menu-item">CREAR</li>
+                    <li class="menu-item">INFORMES</li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="content">
+            <h2 class="title">Inventario </h2>
+            <div class="filter-buttons">
+                <button onclick="filtrar('dama')">Perfume Dama</button>
+                <button onclick="filtrar('caballero')">Perfume Caballero</button>
+                <button onclick="filtrar('todos')">Mostrar Todo</button>
+            </div>
+
+            <div class="table-container">
+                <table id="tablaPerfumes">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>cantidad</th>
+                            <th>Inspiración</th>
+                            <th>Casa</th>
+                            <th>precio</th>
+                            
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-genero="dama">
+                            <td>001</td>  
+                            <td>Rosa Mística</td>
+                            <td>36</td>
+                            <td>dfdfgdghtdfh No. 5</td>
+                            <td>Elegance Co.</td>
+                            <td>36000</td>
+                        </tr>
+                        <tr data-genero="caballero">
+                            <td>002</td>
+                            <td>Brisa Nocturna</td>
+                            <td>62</td>
+                            <td>Oceanic Fragrance</td>
+                            <td>Notas cítricas frescas</td>
+                            <td>62000</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="logout">Cerrar sesión</p>
+        </main>
+    </div>
+    
+</body>
+</html>

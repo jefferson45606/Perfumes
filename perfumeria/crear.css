@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: #e6486f #fce4ec;
+}
+
+/* Body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #8e949c;
+    animation: fadeIn 1s ease-in;
+    overflow: auto;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Container */
+.container {
+    display: flex;
+    width: 900px;
+    height: 600px;
+    background: #284a72;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Sidebar / Logo */
+.logo-section {
+    width: 40%;
+    background: #f4b6c2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.4s ease;
+}
+
+.logo-section:hover {
+    background: #f292b4;
+}
+
+.logo-section img {
+    width: 75%;
+    transition: transform 0.3s ease;
+}
+
+.logo-section img:hover {
+    transform: scale(1.05);
+}
+
+nav ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.menu-item {
+    padding: 10px 15px;
+    margin: 10px;
+    background: #ffffff90;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background: #d14662;
+    color: white;
+}
+
+/* Main Section */
+.login-section {
+    width: 60%;
+    background: #e6dbdb;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input, select {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #cfcfcf;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #333;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    box-shadow: 0 0 5px #af223e;
+    transform: scale(1.02);
+}
+
+/* Categorías */
+.categorias-section {
+    margin-bottom: 20px;
+}
+
+.botones-categorias button,
+.boton-categoria {
+    margin: 5px 5px 10px 0;
+    background: #d14662;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.botones-categorias button:hover,
+.boton-categoria:hover {
+    background: #a00e41;
+    transform: translateY(-2px);
+}
+
+.boton-categoria.activo {
+    background-color: #fff;
+    color: #e6486f;
+    border: 2px solid #e6486f;
+}
+
+/* Crear categoría */
+.crear-categoria {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.crear-categoria input {
+    flex: 1;
+}
+
+.crear-categoria button {
+    padding: 10px 15px;
+    background: #d14662;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.crear-categoria button:hover {
+    background: #a00e41;
+    transform: translateY(-2px);
+}
+
+/* Logout */
+.logout {
+    text-align: center;
+    font-size: 12px;
+    color: #333;
+    text-decoration: none;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.logout:hover {
+    color: #a00e41;
+    text-decoration: underline;
+}
+
+/* Modal */
+#modalProducto {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    animation: fadeInModal 0.4s ease-in-out;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+#modalContenido {
+    background: #ffffff;
+    padding: 35px 30px;
+    border-radius: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 95%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    animation: slideUpModal 0.4s ease-out;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#modalContenido:hover {
+    transform: scale(1.01);
+    box-shadow: 0 16px 40px rgba(230, 72, 111, 0.4);
+}
+
+@keyframes slideUpModal {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+#modalContenido h2 {
+    text-align: center;
+    color: #d14662;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#modalContenido form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+#modalContenido form label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+}
+
+#modalContenido form input {
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: #f7f7f7;
+    color: #333;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+#modalContenido form input:hover {
+    border-color: #dd2a68;
+}
+
+#modalContenido form input:focus {
+    border-color: #e6486f;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(230, 72, 111, 0.3);
+    transform: translateY(-2px);
+}
+
+#modalContenido input[type="file"] {
+    padding: 10px;
+    border: 2px dashed #e6486f;
+    background-color: #fff0f5;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#modalContenido input[type="file"]:hover {
+    background-color: #ffe6ef;
+}
+
+#modalContenido button[type="submit"] {
+    margin-top: 15px;
+    background: #e6486f;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#modalContenido button[type="submit"]:hover {
+    transform: translateY(-3px);
+    background: #c53659;
+}
+
+#cerrarModal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#cerrarModal:hover {
+    color: #d14662;
+}

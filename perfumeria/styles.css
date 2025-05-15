@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #8e949c; 
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.container {
+    display: flex;
+    width: 900px;
+    height: 600px;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.logo-section {
+    width: 50%;
+    background: #f4b6c2; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.4s ease;
+}
+
+.logo-section:hover {
+    background: #f292b4; 
+}
+
+.logo-section img {
+    width: 70%;
+    transition: transform 0.3s ease;
+}
+
+.logo-section img:hover {
+    transform: scale(1.05);
+}
+
+.login-section {
+    width: 50%;
+    background: #e6dbdb; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    transition: background 0.3s ease;
+}
+
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: left;
+    color: #333333;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #cfcfcf;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #333333;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #af223e;
+    transform: scale(1.02);
+}
+
+button {
+    background: #d14662;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background: #a00e41; 
+    transform: translateY(-2px);
+}
+
+a {
+    text-align: center;
+    font-size: 12px;
+    color: #333333;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #a00e41;
+    text-decoration: underline;
+}
+

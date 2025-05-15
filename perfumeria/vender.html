@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vender - Su Aroma</title>
+    <link rel="stylesheet" href="vender.css" />
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <img src="IMG/Su Aroma.png" alt="Logo Su Aroma" class="logo" />
+            <nav>
+                <ul>
+                    <li class="menu-item active">VENDER</li>
+                    <li class="menu-item">CATÁLOGO</li>
+                    <li class="menu-item">INVENTARIO</li>
+                    <li class="menu-item">CREAR</li>
+                    <li class="menu-item">INFORMES</li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="content">
+            <h2 class="title">VENDER</h2>
+            <form>
+                <label for="codigo">CÓDIGO</label>
+                <input type="text" id="codigo" />
+
+                <label for="tipo">Tipo de producto</label>
+                <select id="tipo">
+                    <option>NORMAL </option>
+                    <option>NORMAL 30 ml.</option>
+                    <option>NORMAL 60 ml.</option>
+                    <option>NORMAL 100ml.</option>
+                    <option>RECARGA 30ml.</option>
+                    <option>RECARGA 60ml.</option>
+                    <option>RECARGA 100ml.</option>
+                </select>
+
+                <label for="producto">Nombre del producto</label>
+                <input type="text" id="producto" />
+
+                <label for="cantidad">Cantidad</label>
+                <input type="number" id="cantidad" />
+                <button type="submit"> Agregar otro producto </button>
+
+                <label for="precio">Precio total</label>
+                <input type="text" id="precio" />
+
+                <label for="pago">Método de pago</label>
+                <select id="pago">
+                    <option>EFECTIVO.</option>
+                    <option>NEQUI.</option>
+                    
+                </select>
+
+                <button type="submit">Vender</button>
+            </form>
+            <p class="logout">Cerrar sesión</p>
+        </main>
+    </div>
+</body>
+</html>
