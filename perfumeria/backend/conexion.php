@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $usuario = $conexion->real_escape_string($usuario);
 $contraseña = $conexion->real_escape_string($contraseña);
 
-$sql="SELECT * FROM usuarios WHERE usuario='$usuario' AND contraseña='$contraseña'";
+$sql="SELECT * FROM administrador WHERE usuario='$usuario' AND contraseña='$contraseña'";
 $resultado=$conexion->query($sql);
 
 if ($resultado && $resultado->num_rows === 1) {
