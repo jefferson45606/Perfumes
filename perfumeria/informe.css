@@ -30,7 +30,7 @@ body {
 
 .container {
   display: flex;
-  width: 900px;
+  width: 1000px;
   height: 600px;
   background: #ffffff;
   border-radius: 10px;
@@ -50,6 +50,7 @@ body {
   }
 }
 
+/*barra lateral*/
 .sidebar {
   width: 35%;
   background: #f4b6c2;
@@ -75,28 +76,36 @@ body {
   transform: scale(1.05);
 }
 
-nav ul {
+.menu ul{
   list-style: none;
-  width: 100%;
   padding: 0;
+  width: 0;
 }
 
-.menu-item {
-  padding: 10px 15px;
+.menu-buttons {
+  display: block;
+  padding: 12px 20px;
   margin-bottom: 10px;
-  background: #ffffff90;
-  border-radius: 5px;
-  text-align: center;
-  font-weight: 600;
-  color: #333333;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  color: #ff0066;
+  background-color: transparent;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
 }
 
-.menu-item:hover,
-.menu-item.active {
-  background: #d14662;
-  color: white;
+.menu-buttons:hover{
+  .menu-buttons:hover {
+    background-color: #ff0066;
+    color: #ffffff;
+  }
+}
+
+.menu-buttons.active,
+.menu-buttons[aria-current="page"] {
+  background-color: #ff0066;
+  color: #ffffff;
 }
 
 .content {

@@ -10,11 +10,13 @@ $bd="perfumeria";
 $conexion= new mysqli($server,$user,$pass,$bd);
 
 if($conexion->connect_error){
-    die("No se pudo acceder a la base de datos: ".$conexion->connect_error);
+    die("error de conexion ".$conexion->connect_error);
 
 }else {
     echo "Conexión exitosa";
 }
+
+
 
 // de aqui se validan los datos del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

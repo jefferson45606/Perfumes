@@ -6,55 +6,73 @@
     <title>Vender - Su Aroma</title>
     <link rel="stylesheet" href="vender.css" />
 </head>
+
 <body>
     <div class="container">
         <aside class="sidebar">
             <img src="IMG/Su_Aroma.png" alt="Logo Su Aroma" class="logo" />
-            <nav>
+            <nav class="menu-buttons">
                 <ul>
-                    <li class="menu-item active">VENDER</li>
-                    <li class="menu-item">CATÁLOGO</li>
-                    <li class="menu-item">INVENTARIO</li>
-                    <li class="menu-item">CREAR</li>
-                    <li class="menu-item">INFORMES</li>
+                    <li><a href="vender.html" class="menu-buttons active">VENDER</a></li>
+                    <li><a href="catalogo.html" class="menu-buttons">CATÁLOGO</a></li>
+                    <li><a href="inventario.html" class="menu-buttons">INVENTARIO</a></li>
+                    <li><a href="crear.html" class="menu-buttons">CREAR</a></li>
+                    <li><a href="informe.html" class="menu-buttons">INFORMES</a></li>
                 </ul>
             </nav>
         </aside>
+
         <main class="content">
-            <h2 class="title">VENDER</h2>
-            <form>
-                <label for="codigo">CÓDIGO</label>
-                <input type="text" id="codigo" />
+            <h2 class="title">VENDER PRODUCTO</h2>
+            <form class="form-grid">
+                <div class="form-group">
+                    <label for="codigo">CÓDIGO</label>
+                    <input type="text" id="codigo" />
+                </div>
 
-                <label for="tipo">Tipo de producto</label>
-                <select id="tipo">
-                    <option>NORMAL </option>
-                    <option>NORMAL 30 ml.</option>
-                    <option>NORMAL 60 ml.</option>
-                    <option>NORMAL 100ml.</option>
-                    <option>RECARGA 30ml.</option>
-                    <option>RECARGA 60ml.</option>
-                    <option>RECARGA 100ml.</option>
-                </select>
+                <div class="form-group">
+                    <label for="tipo">Tipo de producto</label>
+                    <select id="tipo">
+                        <option>NORMAL</option>
+                        <option>NORMAL 30 ml.</option>
+                        <option>NORMAL 60 ml.</option>
+                        <option>NORMAL 100 ml.</option>
+                        <option>RECARGA 30 ml.</option>
+                        <option>RECARGA 60 ml.</option>
+                        <option>RECARGA 100 ml.</option>
+                    </select>
+                </div>
 
-                <label for="producto">Nombre del producto</label>
-                <input type="text" id="producto" />
+                <div class="form-group">
+                    <label for="producto">Nombre del producto</label>
+                    <input type="text" id="producto" />
+                </div>
 
-                <label for="cantidad">Cantidad</label>
-                <input type="number" id="cantidad" />
-                <button type="submit"> Agregar otro producto </button>
+                <div class="form-group">
+                    <label for="cantidad">Cantidad</label>
+                    <input type="number" id="cantidad" />
+                </div>
 
-                <label for="precio">Precio total</label>
-                <input type="text" id="precio" />
+                <div class="form-group full-width">
+                    <button type="button">Agregar otro producto</button>
+                </div>
 
-                <label for="pago">Método de pago</label>
-                <select id="pago">
-                    <option>EFECTIVO.</option>
-                    <option>NEQUI.</option>
-                    
-                </select>
+                <div class="form-group">
+                    <label for="precio">Precio total</label>
+                    <input type="text" id="precio" />
+                </div>
 
-                <button type="submit">Vender</button>
+                <div class="form-group">
+                    <label for="pago">Método de pago</label>
+                    <select id="pago">
+                        <option>EFECTIVO</option>
+                        <option>NEQUI</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <button type="submit">Vender</button>
+                </div>
             </form>
             <p class="logout">Cerrar sesión</p>
         </main>
