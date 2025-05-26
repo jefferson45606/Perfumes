@@ -1,0 +1,66 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Su Aroma - Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <img src="IMG/Su_Aroma.png" alt="Logo Su Aroma" class="logo">
+        </div>
+
+
+        <div class="login-section">
+            <h2 class="title">BIENVENIDA</h2>
+            <p class="subtitle">Inicia sesión para continuar.</p>
+            <form action="login.php" method="post"> 
+                
+                <label for="usuario">USUARIO</label>
+                <input type="text" id="usuario" name="usuario" placeholder="yamile bruno" required>
+                
+                <label for="password">CONTRASEÑA</label>
+                <input type="password" id="password" name="contraseña" placeholder="12345" required>
+
+                <div class="show-password">
+                    <input type="checkbox" id="togglePassword">
+                    <label for="togglePassword">Mostrar contraseña</label>
+                </div>
+                
+                <button type="submit">INGRESAR</button>
+                
+                <a href="recuperar.html">¿Has olvidado tu contraseña?</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('change', function () {
+            passwordInput.type = this.checked ? 'text' : 'password';
+        });
+    </script>
+
+    <?php
+    if (isset($_GET['error'])){
+        
+        if ($_GET['error'] == 'campos') {
+            echo "<p style='color:red;'>Por favor complete todos los campos.</p>";
+        } elseif ($_GET['error'] == 'credenciales') {
+            echo "<p style='color:red;'>Usuario o contraseña incorrectos.</p>";
+        }
+    }
+    ?>
+
+</body>
+</html>
