@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Si tus contraseñas están en texto plano:
                 if ($password === $hash) {
                     $_SESSION['usuario'] = $usuario;
-                    header('Location: vender.html');
+                    header('Location: vender.php');
                     exit;
                 }
                 // Si más adelante migras a hashing, usa:
