@@ -89,6 +89,15 @@
 
 <script>
     const categorias = ['Dama', 'Caballero'];
+    fetch('includes/backend/categorias_api.php')
+    .then(response => response.json())
+    .then(data => {
+      categorias.push(...data.map(item => item.nombre_categoria));
+      mostrarCategorias();
+    })
+    .catch(error => {
+      console.error('Error al cargar datos:', error);
+    });
     const botonesCategorias = document.getElementById('botonesCategorias');
     const tablasPorCategoria = document.getElementById('tablasPorCategoria');
     const modalProducto = document.getElementById('modalProducto');
@@ -114,14 +123,34 @@
     function crearCategoria() {
       const input = document.getElementById('nuevaCategoria');
       const nueva = input.value.trim();
-      if (nueva && !categorias.includes(nueva)) {
-        categorias.push(nueva);
-        mostrarCategorias();
-        mostrarTablaCategoria(nueva);
-        input.value = '';
-      } else {
+
+      if (!nueva || categorias.includes(nueva)) {
         alert("Categoría inválida o ya existente");
+        return;
       }
+
+      fetch('includes/backend/categoria_save.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'dato=' + encodeURIComponent(nueva)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          categorias.push(nueva);
+          mostrarCategorias();
+          mostrarTablaCategoria(nueva);
+          input.value = '';
+        } else {
+          alert(data.message || "Ocurrió un error al guardar la categoría.");
+        }
+      })
+      .catch(error => {
+        console.error('Error en la solicitud:', error);
+        alert("Error de conexión al guardar la categoría.");
+      });
     }
     
     function filtrarCategoria(nombre) {

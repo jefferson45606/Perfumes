@@ -11,5 +11,4 @@ if($conn->connect_error){
     error_log("MySQL connection error: " . $conn->connect_error);
     die("Lo sentimos, no se pudo conectar al servidor.");
 }
-?> 
-
+?>
