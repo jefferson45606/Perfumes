@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dato'])) {
     $categoria = trim($_POST['dato']);
 
     if ($categoria !== '') {
-        $conn = conectar();
+        $conn = conectar(); 
 
         // Verifica si ya existe
         $stmt = $conn->prepare("SELECT id FROM categorias WHERE nombre_categoria = ?");
