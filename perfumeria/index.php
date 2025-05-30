@@ -39,7 +39,7 @@ session_start();
 
                 <button type="submit" name="login">Entrar</button>
 
-                <a href="recuperar.html">¿Has olvidado tu contraseña?</a>
+                <a href="recuperar.php">¿Has olvidado tu contraseña?</a>
             </form>
         </div>
     </div>

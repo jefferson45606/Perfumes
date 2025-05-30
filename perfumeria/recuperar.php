@@ -32,35 +32,42 @@
         const codigo = document.getElementById('codigo').value;
         const contraseña = document.getElementById('password').value;
 
-        if (codigo === "1SE55N4") {
-            if (contraseña !== "") {
-                fetch('includes/backend/cargar_n_contraseña.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: 'dato=' + encodeURIComponent(contraseña)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.mensaje === "Contraseña actualizada correctamente.") {
-                        // Redirige solo si fue exitoso
-                        window.location.href = "login.php";
-                    } else {
-                        alert("Error del servidor: " + data.mensaje); 
-                    }
-                })
-                .catch(error => {
-                    console.error('Error en fetch:', error);
-                    alert("Ocurrió un error al procesar la solicitud.");
-                });
+        const encoder = new TextEncoder();
+        const data = encoder.encode(codigo);
+
+        crypto.subtle.digest("SHA-256", data).then(hashBuffer => {
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+            if (hashHex === "cc7980b11a556d770cc02bf632b7b8daac4ac1657d14ecfbc9fdc216994848d5") {
+                if (contraseña !== "") {
+                    fetch('includes/backend/cargar_n_contraseña.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: 'dato=' + encodeURIComponent(contraseña)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.mensaje === "Contraseña actualizada correctamente.") {
+                            window.location.href = "login.php";
+                        } else {
+                            alert("Error del servidor: " + data.mensaje); 
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error en fetch:', error);
+                        alert("Ocurrió un error al procesar la solicitud.");
+                    });
+                } else {
+                    alert("Debe ingresar una contraseña.");
+                }
             } else {
-                alert("Debe ingresar una contraseña.");
+                alert("El código de recuperación es incorrecto.");
             }
-        } else {
-            alert("El código de recuperación es incorrecto.");
-        }
+        });
     }
-</script>
+    </script>
 </body>
 </html>
