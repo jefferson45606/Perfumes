@@ -94,14 +94,29 @@
     function mostrarCategorias(periodo) {
       periodoActual = periodo;
       const contenedor = document.getElementById('categoria-container');
-      contenedor.innerHTML = `
-        <h3>Categorías - ${periodo.toUpperCase()}</h3>
-        <button onclick="filtrar('${periodo}', 'dama')">Dama</button>
-        <button onclick="filtrar('${periodo}', 'caballero')">Caballero</button>
-        <button onclick="filtrar('${periodo}', 'todos')">Mostrar Todo</button>
-        <button onclick="descargarPDF('${periodo}')">Descargar PDF</button>
-      `;
+      const categorias = [];
+      fetch('includes/backend/categorias_api.php')
+      .then(response => response.json())
+      .then(data => {
+        categorias.push(...data.map(item => item.nombre_categoria));
+        const reescribir = [];
+        categorias.forEach(element => {
+          reescribir.push(`<button onclick="filtrar('${periodo}', '${element}')">${element}</button>`);
+        });
+        contenedor.innerHTML = `
+          <h3>Categorías - ${periodo.toUpperCase()}</h3>
+          <button onclick="filtrar('${periodo}', 'dama')">Dama</button>
+          <button onclick="filtrar('${periodo}', 'caballero')">Caballero</button>
+          ${reescribir.join('')}
+          <button onclick="filtrar('${periodo}', 'todos')">Mostrar Todo</button>
+          <button onclick="descargarPDF('${periodo}')">Descargar PDF</button>
+        `;
       document.getElementById("resumenDatos").innerHTML = "";
+      })
+      .catch(error => {
+        console.error('Error al cargar datos:', error);
+      });
+      
     }
 
     function filtrar(periodo, genero) {
