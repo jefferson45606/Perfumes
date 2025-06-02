@@ -42,24 +42,7 @@
                             
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr data-genero="dama">
-                            <td>001</td>  
-                            <td>Rosa Mística</td>
-                            <td>36</td>
-                            <td>dfdfgdghtdfh No. 5</td>
-                            <td>Elegance Co.</td>
-                            <td>36000</td>
-                        </tr>
-                        <tr data-genero="caballero">
-                            <td>002</td>
-                            <td>Brisa Nocturna</td>
-                            <td>62</td>
-                            <td>Oceanic Fragrance</td>
-                            <td>Notas cítricas frescas</td>
-                            <td>62000</td>
-
-                        </tr>
+                    <tbody id="tablaBody">
                     </tbody>
                 </table>
             </div>
@@ -68,5 +51,43 @@
         </main>
     </div>
     
+    <script>//este script es para cargar la informacion de tabla
+const perfumes = [
+  {
+    codigo: "003",
+    nombre: "Luz de Luna",
+    cantidad: 50,
+    inspiracion: "Light Blue",
+    casa: "Luna Scent",
+    precio: 45000,
+  },
+  {
+    codigo: "004",
+    nombre: "Amanecer Salvaje",
+    cantidad: 40,
+    inspiracion: "Sauvage",
+    casa: "Wild Co.",
+    precio: 58000,
+  }
+];
+const tablaBody = document.getElementById("tablaBody");
+
+perfumes.forEach(perfume => {
+  const fila = document.createElement("tr");
+  fila.setAttribute("data-genero", perfume.genero);
+
+  fila.innerHTML = `
+    <td>${perfume.codigo}</td>
+    <td>${perfume.nombre}</td>
+    <td>${perfume.cantidad}</td>
+    <td>${perfume.inspiracion}</td>
+    <td>${perfume.casa}</td>
+    <td>${perfume.precio}</td>
+  `;
+
+  tablaBody.appendChild(fila);
+});
+</script>
+
 </body>
 </html>
