@@ -62,24 +62,6 @@
             </tr>
           </thead>
           <tbody id="tablaBody">
-            <tr data-genero="dama">
-              <td>001</td>
-              <td>Rosa Mística</td>
-              <td>36</td>
-              <td>No. 5</td>
-              <td>Elegance Co.</td>
-              <td>36000</td>
-              <td>3</td><td>2</td><td>1</td><td>5</td><td>2</td><td>0</td>
-            </tr>
-            <tr data-genero="caballero">
-              <td>002</td>
-              <td>Brisa Nocturna</td>
-              <td>62</td>
-              <td>Notas cítricas</td>
-              <td>Oceanic Fragrance</td>
-              <td>62000</td>
-              <td>4</td><td>5</td><td>2</td><td>3</td><td>6</td><td>1</td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -88,20 +70,94 @@
     </main>
   </div>
 
+
+<script>//este script es para cargar la informacion de tabla
+const perfumes = [
+  {
+    codigo: "003",
+    nombre: "Luz de Luna",
+    cantidad: 50,
+    inspiracion: "Light Blue",
+    casa: "Luna Scent",
+    precio: 45000,
+    n30ml: 2,
+    n60ml: 3,
+    n100ml: 1,
+    r30ml: 4,
+    r60ml: 2,
+    r10ml: 1,
+    genero: "dama"
+  },
+  {
+    codigo: "004",
+    nombre: "Amanecer Salvaje",
+    cantidad: 40,
+    inspiracion: "Sauvage",
+    casa: "Wild Co.",
+    precio: 58000,
+    n30ml: 1,
+    n60ml: 1,
+    n100ml: 2,
+    r30ml: 3,
+    r60ml: 1,
+    r10ml: 0,
+    genero: "caballero"
+  }
+];
+const tablaBody = document.getElementById("tablaBody");
+
+perfumes.forEach(perfume => {
+  const fila = document.createElement("tr");
+  fila.setAttribute("data-genero", perfume.genero);
+
+  fila.innerHTML = `
+    <td>${perfume.codigo}</td>
+    <td>${perfume.nombre}</td>
+    <td>${perfume.cantidad}</td>
+    <td>${perfume.inspiracion}</td>
+    <td>${perfume.casa}</td>
+    <td>${perfume.precio}</td>
+    <td>${perfume.n30ml}</td>
+    <td>${perfume.n60ml}</td>
+    <td>${perfume.n100ml}</td>
+    <td>${perfume.r30ml}</td>
+    <td>${perfume.r60ml}</td>
+    <td>${perfume.r10ml}</td>
+  `;
+
+  tablaBody.appendChild(fila);
+});
+</script>
+
   <script>
     let periodoActual = "";
 
     function mostrarCategorias(periodo) {
       periodoActual = periodo;
       const contenedor = document.getElementById('categoria-container');
-      contenedor.innerHTML = `
-        <h3>Categorías - ${periodo.toUpperCase()}</h3>
-        <button onclick="filtrar('${periodo}', 'dama')">Dama</button>
-        <button onclick="filtrar('${periodo}', 'caballero')">Caballero</button>
-        <button onclick="filtrar('${periodo}', 'todos')">Mostrar Todo</button>
-        <button onclick="descargarPDF('${periodo}')">Descargar PDF</button>
-      `;
+      const categorias = [];
+      fetch('includes/backend/categorias_api.php')
+      .then(response => response.json())
+      .then(data => {
+        categorias.push(...data.map(item => item.nombre_categoria));
+        const reescribir = [];
+        categorias.forEach(element => {
+          reescribir.push(`<button onclick="filtrar('${periodo}', '${element}')">${element}</button>`);
+        });
+        contenedor.innerHTML = `
+          <h3>Categorías - ${periodo.toUpperCase()}</h3>
+          <button onclick="filtrar('${periodo}', 'dama')">Dama</button>
+          <button onclick="filtrar('${periodo}', 'caballero')">Caballero</button>
+          ${reescribir.join('')}
+          <button onclick="filtrar('${periodo}', 'todos')">Mostrar Todo</button>
+          <button onclick="descargarPDF('${periodo}')">Descargar PDF</button>
+        `;
       document.getElementById("resumenDatos").innerHTML = "";
+      })
+      .catch(error => {
+        console.error('Error al cargar datos:', error);
+      });
+      
     }
 
     function filtrar(periodo, genero) {
