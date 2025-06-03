@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Su Aroma - Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
     <div class="container">
@@ -27,10 +27,10 @@ session_start();
 
             <form action="login.php" method="post">
                 <label for="usuario">USUARIO</label>
-                <input type="text" id="usuario" name="usuario" required>
+                <input type="text" id="usuario" name="usuario" >
 
                 <label for="password">CONTRASEÑA</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" >
 
                 <label>
                     <input type="checkbox" id="togglePassword">

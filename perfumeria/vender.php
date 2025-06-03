@@ -6,9 +6,7 @@ if (empty($_SESSION['usuario'])) {
 }
 
 include 'includes/conexion.php';
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -16,7 +14,7 @@ include 'includes/conexion.php';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vender - Su Aroma</title>
-    <link rel="stylesheet" href="vender.css" />
+    <link rel="stylesheet" href="CSS/vender.css" />
 </head>
 <body>
     <div class="container">
@@ -50,12 +48,13 @@ include 'includes/conexion.php';
                     <label for="tipo">Tipo de producto</label>
                     <select id="tipo" name="tipo" required>
                         <option value="">-- Selecciona --</option>
-                        <option value="botella|1000">NORMAL 30 ml.</option>
-                        <option value="botella|1000">NORMAL 60 ml.</option>
-                        <option value="botella|1000">NORMAL 100 ml.</option>
-                        <option value="recarga|2000">RECARGA 30 ml.</option>
-                        <option value="recarga|2000">RECARGA 60 ml.</option>
-                        <option value="recarga|2000">RECARGA 100 ml.</option>
+                        <option value="botella|10000">Precio.</option>
+                        <option value="botella|20000">NORMAL 30 ml.</option>
+                        <option value="botella|37000">NORMAL 60 ml.</option>
+                        <option value="botella|58000">NORMAL 100 ml.</option>
+                        <option value="recarga|13000">RECARGA 30 ml.</option>
+                        <option value="recarga|23000">RECARGA 60 ml.</option>
+                        <option value="recarga|48000">RECARGA 100 ml.</option>
                     </select>
                 </div>
 
