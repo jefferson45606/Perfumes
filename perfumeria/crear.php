@@ -47,40 +47,6 @@
     <img class="modal-content" id="imgAmpliada" style="max-width: 90%; max-height: 80%;">
   </div>
 
-  <!-- Modal de creación de producto -->
-  <div id="modalProducto" style="
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1000;
-  display: flex; /* Asegura centrado */
-  justify-content: center;
-  align-items: center;
-  padding: 20px; /* Espacio para evitar desbordes en pantallas pequeñas */
-">
-<div id="modalContenido" style="
-    background: #e6dbdb;
-    padding: 30px;
-    border-radius: 15px;
-    max-height: 90vh;
-    overflow-y: auto;
-    width: 50%;               
-    max-width: 1600px;         
-    position: relative;
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
-">
-  <span id="cerrarModalProducto" style="
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      cursor: pointer;
-      font-size: 28px;
-      font-weight: bold;
-      color: #333;
-  ">&times;</span>
-
   <!-- Aquí se insertará dinámicamente la tabla de creación -->
 </div>
 </div>
