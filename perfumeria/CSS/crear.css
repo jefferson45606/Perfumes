@@ -28,9 +28,9 @@ body {
 /* Container */
 .container {
     display: flex;
-    width: 1000px;
+    width: 900px;
     height: 600px;
-    background: #284a72;
+    background: #ffffff;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
@@ -44,11 +44,12 @@ body {
 
 /* Sidebar / Logo */
 .logo-section {
-    width: 40%;
+    width: 35%;
     background: #f4b6c2;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 20px;
     align-items: center;
     transition: background 0.4s ease;
 }
@@ -66,18 +67,21 @@ body {
     transform: scale(1.05);
 }
 
-
+.menu-buttons {
+  width: 100%;
+}
 
 .menu-item {
-    padding: 10px 15px;
-    margin: 10px;
-    background: #ffffff90;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: 600;
-    color: #333;
-    cursor: pointer;
-    transition: background 0.3s ease;
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  background: #ffffff90;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 600;
+  color: #333333;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .menu-item:hover,

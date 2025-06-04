@@ -1,5 +1,5 @@
 <?php
-//niciamos sesión y conectamos a la base de datos
+//niciamos sesion y conectamos a la base de datos
 session_start();
 include 'includes/conexion.php';
 

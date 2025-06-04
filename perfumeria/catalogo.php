@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catalogo - Su Aroma</title>  
-    <link rel="stylesheet" href="tablas.css" />
+    <link rel="stylesheet" href="CSS/tablas.css" />
 </head>
 
 <body>
