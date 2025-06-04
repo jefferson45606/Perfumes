@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     list($tipo, $mililitros) = $tipoData;
 
     // Obtener producto y nombre
-    $stmt = $conn->prepare("SELECT id, nombre_producto FROM producto WHERE codigo_producto = ?");
+    $stmt = $conn->prepare("SELECT id, nombre_producto FROM productos WHERE codigo_producto = ?");
     $stmt->bind_param('s', $codigo);
     $stmt->execute();
     $stmt->bind_result($prodId, $prodName);
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
 
     // Obtener precio unitario
-    $stmt = $conn->prepare("SELECT precio FROM precios_productos WHERE producto_id = ? AND tipo = ? AND mililitros = ?");
+    $stmt = $conn->prepare("SELECT precio FROM productos WHERE tipo = ? AND mililitros = ?");
     $stmt->bind_param('iss', $prodId, $tipo, $mililitros);
     $stmt->execute();
     $stmt->bind_result($unitPrice);

@@ -16,6 +16,7 @@ include 'includes/conexion.php';
     <title>Vender - Su Aroma</title>
     <link rel="stylesheet" href="CSS/vender.css" />
 </head>
+
 <body>
     <div class="container">
         <aside class="sidebar">
@@ -36,6 +37,7 @@ include 'includes/conexion.php';
                 <div class="message"><?php echo htmlspecialchars($_SESSION['vender_msg']); unset($_SESSION['vender_msg']); ?></div>
             <?php endif; ?>
 
+            <h2 class="title">VENDER PRODUCTO</h2>
             <form id="sellForm" action="vender_process.php" method="post" class="form-grid">
                 <!-- Código del producto -->
                 <div class="form-group">
@@ -48,7 +50,7 @@ include 'includes/conexion.php';
                     <label for="tipo">Tipo de producto</label>
                     <select id="tipo" name="tipo" required>
                         <option value="">-- Selecciona --</option>
-                        <option value="botella|10000">Precio.</option>
+                        <option value="botella|10000">Precio base.</option>
                         <option value="botella|20000">NORMAL 30 ml.</option>
                         <option value="botella|37000">NORMAL 60 ml.</option>
                         <option value="botella|58000">NORMAL 100 ml.</option>
