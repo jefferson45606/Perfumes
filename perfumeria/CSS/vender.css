@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -49,7 +48,9 @@ body {
     }
 }
 
-/* Barra lateral */
+
+/* Sidebar */
+
 .sidebar {
     width: 35%;
     background: #f4b6c2;
@@ -75,40 +76,35 @@ body {
     transform: scale(1.05);
 }
 
-.menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.menu-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.menu-buttons{
-    display: block;
-    padding: 12px 20px;
-    margin-bottom: 10px;
-    color: #ff0066;
-    background-color: transparent;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
+.menu-buttons button {
+    width: 100%;
+    padding: 12px;
+    background: #ffffff90;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+    color: #333333;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-.menu-buttons:hover{
-    .menu-buttons:hover {
-        background-color: #ff0066;
-        color: #ffffff;
-    }
+.menu-buttons button:hover,
+.menu-buttons button.active {
+    background: #d14662;
+    color: white;
 }
 
-.menu-buttons.active,
-.menu-buttons[aria-current="page"] {
-    background-color: #c82646;
-    color: #ffffff;
-    font-weight: bold;
-}
 
 /* Content */
+
 .content {
     width: 65%;
     background: #e6dbdb;
@@ -198,7 +194,9 @@ button:hover {
     text-decoration: underline;
 }
 
+
 /* Scrollbar */
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -215,6 +213,5 @@ button:hover {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: s;
+    background-color: #a00e41;
 }
-

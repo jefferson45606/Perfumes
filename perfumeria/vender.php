@@ -23,11 +23,11 @@ include 'includes/conexion.php';
             <img src="IMG/Su_Aroma.png" alt="Logo Su Aroma" class="logo" />
             <nav class="menu-buttons">
                 <ul>
-                    <li><a href="vender.php" class="menu-buttons active">VENDER</a></li>
-                    <li><a href="catalogo.php" class="menu-buttons">CATÁLOGO</a></li>
-                    <li><a href="inventario.php" class="menu-buttons">INVENTARIO</a></li>
-                    <li><a href="crear.php" class="menu-buttons">CREAR</a></li>
-                    <li><a href="informe.php" class="menu-buttons">INFORMES</a></li>
+                    <button onclick="window.location.href='vender.php';" class="menu-buttons active">VENDER</button>
+                    <button onclick="window.location.href='catalogo.php';" class="menu-buttons">CATÁLOGO</button>
+                    <button onclick="window.location.href='inventario.php';" class="menu-buttons">INVENTARIO</button>
+                    <button onclick="window.location.href='crear.php';" class="menu-buttons">CREAR</a></li>
+                    <button onclick="window.location.href='informe.php';" class="menu-buttons">INFORMES</button>
                 </ul>
             </nav>
         </aside>

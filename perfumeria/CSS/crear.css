@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -9,26 +8,29 @@
     scrollbar-color: #e6486f #fce4ec;
 }
 
-/* Body */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #8e949c;
     animation: fadeIn 1s ease-in;
-    overflow: auto;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.98); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
-/* Container */
 .container {
     display: flex;
-    width: 900px;
+    width: 1000px;
     height: 600px;
     background: #ffffff;
     border-radius: 10px;
@@ -38,11 +40,16 @@ body {
 }
 
 @keyframes slideUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-/* Sidebar / Logo */
 .logo-section {
     width: 35%;
     background: #f4b6c2;
@@ -50,7 +57,6 @@ body {
     flex-direction: column;
     justify-content: center;
     padding: 20px;
-    align-items: center;
     transition: background 0.4s ease;
 }
 
@@ -67,32 +73,38 @@ body {
     transform: scale(1.05);
 }
 
-.menu-buttons {
-  width: 100%;
+.menu-buttons ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    width: 100%;
 }
 
-.menu-item {
-  width: 100%;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  background: #ffffff90;
-  border-radius: 5px;
-  text-align: center;
-  font-weight: 600;
-  color: #333333;
-  cursor: pointer;
-  transition: background 0.3s ease;
+.menu-buttons li {
+    margin-bottom: 10px;
 }
 
-.menu-item:hover,
-.menu-item.active {
+.menu-buttons a {
+    display: block;
+    padding: 12px;
+    background: #ffffff90;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+    color: #333333;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.menu-buttons a:hover,
+.menu-buttons a.active {
     background: #d14662;
     color: white;
 }
 
-/* Main Section */
 .login-section {
-    width: 60%;
+    width: 65%;
     background: #e6dbdb;
     padding: 40px 30px;
     display: flex;
@@ -122,7 +134,8 @@ label {
     display: block;
 }
 
-input, select {
+input,
+select {
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -140,7 +153,6 @@ select:focus {
     transform: scale(1.02);
 }
 
-/* Categorías */
 .categorias-section {
     margin-bottom: 20px;
 }
@@ -171,7 +183,6 @@ select:focus {
     border: 2px solid #e6486f;
 }
 
-/* Crear categoría */
 .crear-categoria {
     display: flex;
     gap: 10px;
@@ -198,7 +209,6 @@ select:focus {
     transform: translateY(-2px);
 }
 
-/* Logout */
 .logout {
     text-align: center;
     font-size: 12px;
@@ -214,7 +224,6 @@ select:focus {
     text-decoration: underline;
 }
 
-/* Modal */
 #modalProducto {
     display: none;
     position: fixed;
@@ -231,8 +240,14 @@ select:focus {
 }
 
 @keyframes fadeInModal {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 #modalContenido {
@@ -255,8 +270,14 @@ select:focus {
 }
 
 @keyframes slideUpModal {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 #modalContenido h2 {
@@ -333,7 +354,8 @@ select:focus {
     background: #c53659;
 }
 
-#cerrarModal {
+#cerrarModal,
+#cerrarModalProducto {
     position: absolute;
     top: 20px;
     right: 25px;
@@ -343,6 +365,7 @@ select:focus {
     transition: color 0.3s ease;
 }
 
-#cerrarModal:hover {
+#cerrarModal:hover,
+#cerrarModalProducto:hover {
     color: #d14662;
 }
