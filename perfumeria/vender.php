@@ -100,9 +100,7 @@ include 'includes/conexion.php';
             </form>
 
             <!-- Apartado de cierre de sesion -->
-            <div class="logout-container">
-                <a href="logout.php" class="logout-button">Cerrar sesión</a>
-            </div>
+            <a class="logout" href="logout.php">Cerrar sesión</a>
         </main>
     </div>
 

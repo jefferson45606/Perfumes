@@ -9,17 +9,17 @@
 
 <body>
     <div class="container">
-        <aside class="sidebar">
-            <img src="IMG/Su_Aroma.png" alt="Logo Su Aroma" class="logo" />
-            <nav class="menu-buttons">
-                <ul>
-                    <li><a href="vender.php" class="menu-buttons">VENDER</a></li>
-                    <li><a href="catalogo.php" class="menu-buttons active">CATÁLOGO</a></li>
-                    <li><a href="inventario.php" class="menu-buttons">INVENTARIO</a></li>
-                    <li><a href="crear.php" class="menu-buttons">CREAR</a></li>
-                    <li><a href="informe.php" class="menu-buttons">INFORMES</a></li>
-                </ul>
-            </nav>
+        <aside class="logo-section">
+        <img src="IMG/Su_Aroma.png" alt="Logo Su Aroma" />
+        <nav class="menu-buttons">
+            <ul>
+                <li><a href="vender.php" class="menu-buttons">VENDER</a></li>
+                <li><a href="catalogo.php" class="menu-buttons active">CATÁLOGO</a></li>
+                <li><a href="inventario.php" class="menu-buttons">INVENTARIO</a></li>
+                <li><a href="crear.php" class="menu-buttons">CREAR</a></li>
+                <li><a href="informe.php" class="menu-buttons">INFORMES</a></li>
+            </ul>
+        </nav>
         </aside>
 
         <main class="content">

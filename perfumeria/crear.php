@@ -37,7 +37,7 @@
 
       <div id="tablasPorCategoria"></div>
 
-      <a href="logout.php" class="logout">Cerrar sesión</a>
+      <a class="logout" href="logout.php">Cerrar sesión</a>
     </main>
   </div>
 
@@ -48,8 +48,11 @@
   </div>
 
   <!-- Aquí se insertará dinámicamente la tabla de creación -->
-</div>
-</div>
+  <div id="modalProducto" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000; justify-content: center; align-items: center; padding: 20px; display: none;">
+    <div id="modalContenido" style="background: #e6dbdb; padding: 30px; border-radius: 15px; max-height: 90vh; overflow-y: auto; width: 50%; max-width: 1600px; position: relative; box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);">
+      <span id="cerrarModalProducto" style="position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 28px; font-weight: bold; color: #333;">&times;</span>
+    </div>
+  </div>
 
   
 
