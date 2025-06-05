@@ -35,6 +35,11 @@
         </div>
       </div>
 
+      <div class="buscar-producto" style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <input type="text" id="BuscarProducto" placeholder="Buscar producto" />
+        <button onclick="buscarProducto()" class="boton-categoria">BUSCAR PRODUCTO</button>
+      </div>
+
       <div id="tablasPorCategoria"></div>
 
       <a class="logout" href="logout.php">Cerrar sesión</a>
@@ -166,34 +171,41 @@
       form.style.gap = '10px';
     
       const campos = [
-        'Código', 'Imagen', 'Nombre', 'Inspiración', 'Casa', 'Descripción',
-        'Cantidad', 'Precio30', 'Precio60', 'Precio100',
-        'Recarga30', 'Recarga60', 'Recarga100'
+        'Código', 'Imagen', 'Nombre', 'Inspiración', 'Casa', 'Descripción', 'Cantidad',
+        { nombre: 'Precio 30ml', tipo: 'input' },
+        { nombre: 'Precio 60ml', tipo: 'input' },
+        { nombre: 'Precio 100ml', tipo: 'input' },
+        { nombre: 'Recarga 30ml', tipo: 'input' },
+        { nombre: 'Recarga 60ml', tipo: 'input' },
+        { nombre: 'Recarga 100ml', tipo: 'input' }
       ];
     
       const inputs = {};
     
       campos.forEach(campo => {
         const label = document.createElement('label');
-        label.textContent = campo;
+        let campoNombre = typeof campo === 'string' ? campo : campo.nombre;
+        let tipoCampo = typeof campo === 'string' ? 'input' : campo.tipo;
+
+        label.textContent = campoNombre;
+
         const input = document.createElement('input');
-        input.type = (campo === 'Cantidad' || campo.includes('Precio') || campo.includes('Recarga')) ? 'number' : 'text';
-        input.name = campo;
-    
-        if (campo === 'Imagen') {
+        input.type = (campoNombre === 'Cantidad') ? 'number' : 'text';
+        input.name = campoNombre;
+
+        if (campoNombre === 'Imagen') {
           input.type = 'file';
           input.accept = 'image/*';
         } else if (datos) {
-          input.value = datos[campo] || '';
+          input.value = datos[campoNombre] || '';
         }
-    
-        if (datos && campo !== 'Descripción' && !['Cantidad', 'Precio30', 'Precio60', 'Precio100', 'Recarga30', 'Recarga60', 'Recarga100'].includes(campo)) {
+
+        if (datos && campoNombre !== 'Descripción' && campoNombre !== 'Cantidad') {
           input.disabled = true;
         }
-    
+
         label.appendChild(input);
         form.appendChild(label);
-        inputs[campo] = input;
       });
     
       const btnGuardar = document.createElement('button');
@@ -329,6 +341,10 @@
         modalProducto.style.display = "none";
       }
     };
+
+    function buscarProducto() {
+      alert("Función de búsqueda no implementada aún.");
+    }
     
     mostrarCategorias();
     </script>
