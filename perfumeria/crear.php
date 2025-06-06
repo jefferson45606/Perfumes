@@ -154,7 +154,7 @@
         tarjeta.style.textAlign = 'center';
         tarjeta.onmouseenter = () => tarjeta.style.backgroundColor = '#c53557';
         tarjeta.onmouseleave = () => tarjeta.style.backgroundColor = '#e6486f';
-        tarjeta.onclick = () => abrirFormulario('', contenedor);
+        tarjeta.onclick = () => abrirFormulario(nombre, contenedor);
     
         contenedor.appendChild(tarjeta);
         tablasPorCategoria.appendChild(contenedor);
@@ -169,45 +169,49 @@
       form.style.display = 'flex';
       form.style.flexDirection = 'column';
       form.style.gap = '10px';
-    
+
       const campos = [
         'Código', 'Imagen', 'Nombre', 'Inspiración', 'Casa', 'Descripción', 'Cantidad',
-        { nombre: 'Precio 30ml', tipo: 'input' },
-        { nombre: 'Precio 60ml', tipo: 'input' },
-        { nombre: 'Precio 100ml', tipo: 'input' },
-        { nombre: 'Recarga 30ml', tipo: 'input' },
-        { nombre: 'Recarga 60ml', tipo: 'input' },
-        { nombre: 'Recarga 100ml', tipo: 'input' }
+        { nombre: 'Precio 30ml' },
+        { nombre: 'Precio 60ml' },
+        { nombre: 'Precio 100ml' },
+        { nombre: 'Recarga 30ml' },
+        { nombre: 'Recarga 60ml' },
+        { nombre: 'Recarga 100ml' }
       ];
-    
-      const inputs = {};
-    
-      campos.forEach(campo => {
-        const label = document.createElement('label');
-        let campoNombre = typeof campo === 'string' ? campo : campo.nombre;
-        let tipoCampo = typeof campo === 'string' ? 'input' : campo.tipo;
 
+      const inputs = {};
+
+      campos.forEach(campo => {
+        const campoNombre = typeof campo === 'string' ? campo : campo.nombre;
+
+        const label = document.createElement('label');
         label.textContent = campoNombre;
 
         const input = document.createElement('input');
-        input.type = (campoNombre === 'Cantidad') ? 'number' : 'text';
         input.name = campoNombre;
+        input.required = true;
 
         if (campoNombre === 'Imagen') {
           input.type = 'file';
           input.accept = 'image/*';
-        } else if (datos) {
+          input.required = !datos; // si estamos editando, la imagen no es obligatoria
+        } else if (campoNombre === 'Cantidad') {
+          input.type = 'number';
+        } else {
+          input.type = 'text';
+        }
+
+        if (datos && campoNombre !== 'Imagen') {
           input.value = datos[campoNombre] || '';
         }
 
-        if (datos && campoNombre !== 'Descripción' && campoNombre !== 'Cantidad') {
-          input.disabled = true;
-        }
+        inputs[campoNombre] = input;
 
         label.appendChild(input);
         form.appendChild(label);
       });
-    
+
       const btnGuardar = document.createElement('button');
       btnGuardar.type = 'submit';
       btnGuardar.textContent = 'Guardar';
@@ -217,35 +221,56 @@
       btnGuardar.style.border = 'none';
       btnGuardar.style.borderRadius = '6px';
       btnGuardar.style.cursor = 'pointer';
-    
+
       form.appendChild(btnGuardar);
       modalContenido.appendChild(form);
       modalProducto.style.display = 'flex';
-    
+
       form.onsubmit = (e) => {
         e.preventDefault();
+
         const nuevosDatos = {};
-    
-        campos.forEach(c => {
-          if (c === 'Imagen') return;
-          const val = inputs[c].value;
-          nuevosDatos[c] = inputs[c].type === 'number' ? parseFloat(val) || 0 : val;
+
+        // Validar duplicado
+        const nombreNuevo = inputs['Nombre'].value.trim().toLowerCase();
+        const productosExistentes = document.querySelectorAll('[data-producto]');
+        const nombreDuplicado = Array.from(productosExistentes).some(card => {
+          const prod = JSON.parse(card.dataset.producto);
+          const mismoNombre = prod['Nombre'].trim().toLowerCase() === nombreNuevo;
+          const esMismoProducto = card === card;
+          return mismoNombre && (!datos || !esMismoProducto);
         });
-    
-        const file = inputs['Imagen'].files[0];
-        const terminar = () => {
+
+        if (nombreDuplicado) {
+          alert("Ya existe un producto con ese nombre.");
+          return;
+        }
+
+        campos.forEach(c => {
+          const campoNombre = typeof c === 'string' ? c : c.nombre;
+          if (campoNombre === 'Imagen') return;
+          const val = inputs[campoNombre].value.trim();
+          nuevosDatos[campoNombre] = inputs[campoNombre].type === 'number' ? parseFloat(val) || 0 : val;
+        });
+
+        const fileInput = inputs['Imagen'];
+        const file = fileInput.files[0];
+
+        function terminar() {
+          nuevosDatos['Categoría'] = categoria; // Guardamos categoría
           if (card) {
             actualizarProducto(nuevosDatos, card);
           } else {
             crearTarjetaProducto(nuevosDatos, contenedorPadre);
           }
+          guardar_producto(nuevosDatos);
           modalProducto.style.display = 'none';
-        };
-    
+        }
+
         if (file) {
           const reader = new FileReader();
           reader.onload = () => {
-            nuevosDatos['Imagen'] = reader.result;
+            nuevosDatos['Imagen'] = reader.result; // base64
             terminar();
           };
           reader.readAsDataURL(file);
@@ -254,6 +279,42 @@
           terminar();
         }
       };
+    }
+
+    function guardar_producto(datos) {
+      fetch('includes/backend/producto_save.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Error al guardar el producto");
+        return response.text(); // o .json() si devuelves JSON
+      })
+      .then(resultado => {
+        console.log("Producto guardado correctamente:", resultado);
+        // Aquí puedes mostrar un mensaje o hacer otra cosa
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("Hubo un problema al guardar el producto.");
+      });
+    }
+
+
+    function guardarProducto(nuevosDatos, file, callback) {
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          nuevosDatos['Imagen'] = reader.result;
+          callback(nuevosDatos);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        callback(nuevosDatos);
+      }
     }
     
     function crearTarjetaProducto(datos, contenedor) {
