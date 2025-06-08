@@ -1,0 +1,5 @@
+.then(response => response.text())
+.then(text => {
+  console.log('RESPUESTA DEL BACKEND:', text);
+  // ...
+})

@@ -9,29 +9,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dato'])) {
     if ($categoria !== '') {
         $conn = conectar(); 
 
-        // Verifica si ya existe
-        $stmt = $conn->prepare("SELECT id FROM categorias WHERE nombre_categoria = ?");
+        $stmt = $conn->prepare("INSERT INTO categorias (nombre_categoria) VALUES (?)");
         $stmt->bind_param("s", $categoria);
-        $stmt->execute();
-        $stmt->store_result();
-
-        if ($stmt->num_rows > 0) {
-            echo json_encode(['success' => false, 'message' => 'La categoría ya existe.']);
+        if ($stmt->execute()) {
+            $id = $conn->insert_id;
+            echo json_encode([
+                'success' => true,
+                'categoria' => [
+                    'id' => $id,
+                    'nombre_categoria' => $categoria
+                ]
+            ]);
         } else {
-            $stmt->close();
-            $stmt = $conn->prepare("INSERT INTO categorias (nombre_categoria) VALUES (?)");
-            $stmt->bind_param("s", $categoria);
-            if ($stmt->execute()) {
-                echo json_encode(['success' => true, 'message' => 'Categoría guardada correctamente.']);
-            } else {
-                echo json_encode(['success' => false, 'message' => 'Error al insertar en la base de datos.']);
-            }
+            echo json_encode(['success' => false, 'message' => 'Error al guardar la categoría.']);
         }
 
         $stmt->close();
         $conn->close();
     } else {
-        echo json_encode(['success' => false, 'message' => 'La categoría no puede estar vacía.']);
+        echo json_encode(['success' => false, 'message' => 'Nombre de categoría vacío.']);
     }
 } else {
     echo json_encode(['success' => false, 'message' => 'Solicitud no válida.']);

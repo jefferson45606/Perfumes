@@ -62,356 +62,370 @@
   
 
 <script>
-    const categorias = ['Dama', 'Caballero'];
-    fetch('includes/backend/categorias_api.php')
-    .then(response => response.json())
-    .then(data => {
-      categorias.push(...data.map(item => item.nombre_categoria));
+let categorias = [];
+let categoriaSeleccionadaId = null;
+
+// Cargar categorías desde el backend
+fetch('includes/backend/categorias_api.php')
+  .then(r => r.json())
+  .then(data => {
+    categorias = data; // [{id: 1, nombre_categoria: "Dama"}, ...]
+    mostrarCategorias();
+  });
+
+function mostrarCategorias() {
+  const botonesCategorias = document.getElementById('botonesCategorias');
+  botonesCategorias.innerHTML = '';
+  categorias.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.textContent = cat.nombre_categoria;
+    btn.classList.add('boton-categoria');
+    btn.dataset.id = cat.id;
+    btn.onclick = () => {
+      document.querySelectorAll('.boton-categoria').forEach(b => b.classList.remove('activo'));
+      btn.classList.add('activo');
+      categoriaSeleccionadaId = cat.id;
+      mostrarTablaCategoria(cat.nombre_categoria);
+      filtrarCategoria(cat.nombre_categoria);
+    };
+    botonesCategorias.appendChild(btn);
+  });
+}
+
+function crearCategoria() {
+  const input = document.getElementById('nuevaCategoria');
+  const nueva = input.value.trim();
+
+  if (!nueva || categorias.includes(nueva)) {
+    alert("Categoría inválida o ya existente");
+    return;
+  }
+
+  fetch('includes/backend/categoria_save.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: 'dato=' + encodeURIComponent(nueva)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success && data.categoria) {
+      categorias.push(data.categoria);
       mostrarCategorias();
+      mostrarTablaCategoria(data.categoria.nombre_categoria);
+      input.value = '';
+    } else {
+      alert(data.message || "Ocurrió un error al guardar la categoría.");
+    }
+  })
+  .catch(error => {
+    console.error('Error en la solicitud:', error);
+    alert("Error de conexión al guardar la categoría.");
+  });
+}
+
+function filtrarCategoria(nombre) {
+  categorias.forEach(cat => {
+    const contenedor = document.getElementById(`contenedor-${cat}`);
+    if (contenedor) {
+      contenedor.style.display = (cat === nombre) ? 'block' : 'none';
+    }
+  });
+}
+
+function mostrarTablaCategoria(nombre) {
+  let contenedor = document.getElementById(`contenedor-${nombre}`);
+  if (!contenedor) {
+    contenedor = document.createElement('div');
+    contenedor.id = `contenedor-${nombre}`;
+    contenedor.style.marginTop = '20px';
+
+    const tarjeta = document.createElement('div');
+    tarjeta.textContent = '🛠️ Crea tu producto aquí';
+    tarjeta.style.cursor = 'pointer';
+    tarjeta.style.padding = '15px';
+    tarjeta.style.backgroundColor = '#e6486f';
+    tarjeta.style.color = '#fff';
+    tarjeta.style.borderRadius = '10px';
+    tarjeta.style.fontWeight = 'bold';
+    tarjeta.style.textAlign = 'center';
+    tarjeta.onmouseenter = () => tarjeta.style.backgroundColor = '#c53557';
+    tarjeta.onmouseleave = () => tarjeta.style.backgroundColor = '#e6486f';
+    tarjeta.onclick = () => abrirFormulario(nombre, contenedor);
+
+    contenedor.appendChild(tarjeta);
+    tablasPorCategoria.appendChild(contenedor);
+  }
+
+  filtrarCategoria(nombre);
+}
+
+function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = null) {
+  modalContenido.innerHTML = '';
+  const form = document.createElement('form');
+  form.style.display = 'flex';
+  form.style.flexDirection = 'column';
+  form.style.gap = '10px';
+
+  const campos = [
+    'Código', 'Imagen', 'Nombre', 'Inspiración', 'Casa', 'Descripción', 'Cantidad',
+    'Precio',
+    { nombre: 'Precio 30ml' },
+    { nombre: 'Precio 60ml' },
+    { nombre: 'Precio 100ml' },
+    { nombre: 'Recarga 30ml' },
+    { nombre: 'Recarga 60ml' },
+    { nombre: 'Recarga 100ml' }
+  ];
+
+  const inputs = {};
+
+  campos.forEach(campo => {
+    const campoNombre = typeof campo === 'string' ? campo : campo.nombre;
+
+    const label = document.createElement('label');
+    label.textContent = campoNombre;
+
+    const input = document.createElement('input');
+    input.name = campoNombre;
+    input.required = true;
+
+    if (campoNombre === 'Imagen') {
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.required = !datos; // si estamos editando, la imagen no es obligatoria
+    } else if (campoNombre === 'Cantidad') {
+      input.type = 'number';
+    } else {
+      input.type = 'text';
+    }
+
+    if (datos && campoNombre !== 'Imagen') {
+      input.value = datos[campoNombre] || '';
+    }
+
+    inputs[campoNombre] = input;
+
+    label.appendChild(input);
+    form.appendChild(label);
+  });
+
+  const btnGuardar = document.createElement('button');
+  btnGuardar.type = 'submit';
+  btnGuardar.textContent = 'Guardar';
+  btnGuardar.style.padding = '10px';
+  btnGuardar.style.backgroundColor = '#d14662';
+  btnGuardar.style.color = '#fff';
+  btnGuardar.style.border = 'none';
+  btnGuardar.style.borderRadius = '6px';
+  btnGuardar.style.cursor = 'pointer';
+
+  form.appendChild(btnGuardar);
+  modalContenido.appendChild(form);
+  modalProducto.style.display = 'flex';
+
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    const nuevosDatos = {};
+
+    // Validar duplicado
+    const nombreNuevo = inputs['Nombre'].value.trim().toLowerCase();
+    const productosExistentes = document.querySelectorAll('[data-producto]');
+    const nombreDuplicado = Array.from(productosExistentes).some(card => {
+      const prod = JSON.parse(card.dataset.producto);
+      const mismoNombre = prod['Nombre'].trim().toLowerCase() === nombreNuevo;
+      const esMismoProducto = card === card;
+      return mismoNombre && (!datos || !esMismoProducto);
+    });
+
+    if (nombreDuplicado) {
+      alert("Ya existe un producto con ese nombre.");
+      return;
+    }
+
+    campos.forEach(c => {
+      const campoNombre = typeof c === 'string' ? c : c.nombre;
+      if (campoNombre === 'Imagen') return;
+      const val = inputs[campoNombre].value.trim();
+      nuevosDatos[campoNombre] = inputs[campoNombre].type === 'number' ? parseFloat(val) || 0 : val;
+    });
+
+    const fileInput = inputs['Imagen'];
+    const file = fileInput.files[0];
+    const formData = new FormData();
+
+    for (const key in nuevosDatos) {
+      formData.append(key, nuevosDatos[key]);
+    }
+    // Aquí aseguramos que se envía el ID de la categoría seleccionada
+    formData.append('categoria_id', categoriaSeleccionadaId);
+
+    if (file) {
+      formData.append('imagen', file);
+    } else if (datos?.['Imagen']) {
+      formData.append('ImagenExistente', datos['Imagen']);
+    }
+
+    // Agregar precios y recargas al FormData
+    const valor30 = inputs['Precio 30ml'].value.trim();
+    const valor60 = inputs['Precio 60ml'].value.trim();
+    const valor100 = inputs['Precio 100ml'].value.trim();
+    const recarga30 = inputs['Recarga 30ml'].value.trim();
+    const recarga60 = inputs['Recarga 60ml'].value.trim();
+    const recarga100 = inputs['Recarga 100ml'].value.trim();
+
+    formData.append('precio_30ml', valor30);
+    formData.append('precio_60ml', valor60);
+    formData.append('precio_100ml', valor100);
+    formData.append('recarga_30ml', recarga30);
+    formData.append('recarga_60ml', recarga60);
+    formData.append('recarga_100ml', recarga100);
+
+    fetch('includes/backend/producto_save.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(r => r.json())
+    .then(resultado => {
+      if (resultado.success) {
+        if (card) {
+          actualizarProducto({ ...nuevosDatos, Imagen: resultado.imagen }, card);
+        } else {
+          crearTarjetaProducto({ ...nuevosDatos, Imagen: resultado.imagen }, contenedorPadre);
+        }
+        modalProducto.style.display = 'none';
+      } else {
+        alert(resultado.message || 'Error al guardar el producto.');
+      }
     })
     .catch(error => {
-      console.error('Error al cargar datos:', error);
+      alert("Error de red o del servidor.");
+      console.error(error);
     });
-    const botonesCategorias = document.getElementById('botonesCategorias');
-    const tablasPorCategoria = document.getElementById('tablasPorCategoria');
-    const modalProducto = document.getElementById('modalProducto');
-    const modalContenido = document.getElementById('modalContenido');
-    const cerrarModalProducto = document.getElementById('cerrarModalProducto');
-    
-    function mostrarCategorias() {
-      botonesCategorias.innerHTML = '';
-      categorias.forEach(cat => {
-        const btn = document.createElement('button');
-        btn.textContent = cat;
-        btn.classList.add('boton-categoria');
-        btn.onclick = () => {
-          document.querySelectorAll('.boton-categoria').forEach(b => b.classList.remove('activo'));
-          btn.classList.add('activo');
-          mostrarTablaCategoria(cat);
-          filtrarCategoria(cat);
-        };
-        botonesCategorias.appendChild(btn);
-      });
-    }
-    
-    function crearCategoria() {
-      const input = document.getElementById('nuevaCategoria');
-      const nueva = input.value.trim();
+  }
+}
+function terminar() {
+  nuevosDatos['Categoría'] = categoria; // Guardamos categoría
+  if (card) {
+    actualizarProducto(nuevosDatos, card);
+  } else {
+    crearTarjetaProducto(nuevosDatos, contenedorPadre);
+  }
+  guardar_producto(nuevosDatos);
+  modalProducto.style.display = 'none';
+}
 
-      if (!nueva || categorias.includes(nueva)) {
-        alert("Categoría inválida o ya existente");
-        return;
-      }
-
-      fetch('includes/backend/categoria_save.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: 'dato=' + encodeURIComponent(nueva)
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          categorias.push(nueva);
-          mostrarCategorias();
-          mostrarTablaCategoria(nueva);
-          input.value = '';
-        } else {
-          alert(data.message || "Ocurrió un error al guardar la categoría.");
-        }
-      })
-      .catch(error => {
-        console.error('Error en la solicitud:', error);
-        alert("Error de conexión al guardar la categoría.");
-      });
-    }
-    
-    function filtrarCategoria(nombre) {
-      categorias.forEach(cat => {
-        const contenedor = document.getElementById(`contenedor-${cat}`);
-        if (contenedor) {
-          contenedor.style.display = (cat === nombre) ? 'block' : 'none';
-        }
-      });
-    }
-    
-    function mostrarTablaCategoria(nombre) {
-      let contenedor = document.getElementById(`contenedor-${nombre}`);
-      if (!contenedor) {
-        contenedor = document.createElement('div');
-        contenedor.id = `contenedor-${nombre}`;
-        contenedor.style.marginTop = '20px';
-    
-        const tarjeta = document.createElement('div');
-        tarjeta.textContent = '🛠️ Crea tu producto aquí';
-        tarjeta.style.cursor = 'pointer';
-        tarjeta.style.padding = '15px';
-        tarjeta.style.backgroundColor = '#e6486f';
-        tarjeta.style.color = '#fff';
-        tarjeta.style.borderRadius = '10px';
-        tarjeta.style.fontWeight = 'bold';
-        tarjeta.style.textAlign = 'center';
-        tarjeta.onmouseenter = () => tarjeta.style.backgroundColor = '#c53557';
-        tarjeta.onmouseleave = () => tarjeta.style.backgroundColor = '#e6486f';
-        tarjeta.onclick = () => abrirFormulario(nombre, contenedor);
-    
-        contenedor.appendChild(tarjeta);
-        tablasPorCategoria.appendChild(contenedor);
-      }
-    
-      filtrarCategoria(nombre);
-    }
-    
-    function abrirFormulario(categoria, contenedorPadre, datos = null, card = null) {
-      modalContenido.innerHTML = '';
-      const form = document.createElement('form');
-      form.style.display = 'flex';
-      form.style.flexDirection = 'column';
-      form.style.gap = '10px';
-
-      const campos = [
-        'Código', 'Imagen', 'Nombre', 'Inspiración', 'Casa', 'Descripción', 'Cantidad',
-        { nombre: 'Precio 30ml' },
-        { nombre: 'Precio 60ml' },
-        { nombre: 'Precio 100ml' },
-        { nombre: 'Recarga 30ml' },
-        { nombre: 'Recarga 60ml' },
-        { nombre: 'Recarga 100ml' }
-      ];
-
-      const inputs = {};
-
-      campos.forEach(campo => {
-        const campoNombre = typeof campo === 'string' ? campo : campo.nombre;
-
-        const label = document.createElement('label');
-        label.textContent = campoNombre;
-
-        const input = document.createElement('input');
-        input.name = campoNombre;
-        input.required = true;
-
-        if (campoNombre === 'Imagen') {
-          input.type = 'file';
-          input.accept = 'image/*';
-          input.required = !datos; // si estamos editando, la imagen no es obligatoria
-        } else if (campoNombre === 'Cantidad') {
-          input.type = 'number';
-        } else {
-          input.type = 'text';
-        }
-
-        if (datos && campoNombre !== 'Imagen') {
-          input.value = datos[campoNombre] || '';
-        }
-
-        inputs[campoNombre] = input;
-
-        label.appendChild(input);
-        form.appendChild(label);
-      });
-
-      const btnGuardar = document.createElement('button');
-      btnGuardar.type = 'submit';
-      btnGuardar.textContent = 'Guardar';
-      btnGuardar.style.padding = '10px';
-      btnGuardar.style.backgroundColor = '#d14662';
-      btnGuardar.style.color = '#fff';
-      btnGuardar.style.border = 'none';
-      btnGuardar.style.borderRadius = '6px';
-      btnGuardar.style.cursor = 'pointer';
-
-      form.appendChild(btnGuardar);
-      modalContenido.appendChild(form);
-      modalProducto.style.display = 'flex';
-
-      form.onsubmit = (e) => {
-        e.preventDefault();
-
-        const nuevosDatos = {};
-
-        // Validar duplicado
-        const nombreNuevo = inputs['Nombre'].value.trim().toLowerCase();
-        const productosExistentes = document.querySelectorAll('[data-producto]');
-        const nombreDuplicado = Array.from(productosExistentes).some(card => {
-          const prod = JSON.parse(card.dataset.producto);
-          const mismoNombre = prod['Nombre'].trim().toLowerCase() === nombreNuevo;
-          const esMismoProducto = card === card;
-          return mismoNombre && (!datos || !esMismoProducto);
-        });
-
-        if (nombreDuplicado) {
-          alert("Ya existe un producto con ese nombre.");
-          return;
-        }
-
-        campos.forEach(c => {
-          const campoNombre = typeof c === 'string' ? c : c.nombre;
-          if (campoNombre === 'Imagen') return;
-          const val = inputs[campoNombre].value.trim();
-          nuevosDatos[campoNombre] = inputs[campoNombre].type === 'number' ? parseFloat(val) || 0 : val;
-        });
-
-        const fileInput = inputs['Imagen'];
-        const file = fileInput.files[0];
-
-        function terminar() {
-          nuevosDatos['Categoría'] = categoria; // Guardamos categoría
-          if (card) {
-            actualizarProducto(nuevosDatos, card);
-          } else {
-            crearTarjetaProducto(nuevosDatos, contenedorPadre);
-          }
-          guardar_producto(nuevosDatos);
-          modalProducto.style.display = 'none';
-        }
-
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = () => {
-            nuevosDatos['Imagen'] = reader.result; // base64
-            terminar();
-          };
-          reader.readAsDataURL(file);
-        } else {
-          nuevosDatos['Imagen'] = datos?.['Imagen'] || '';
-          terminar();
-        }
-      };
-    }
-
-    function guardar_producto(datos) {
-      fetch('includes/backend/producto_save.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datos)
-      })
-      .then(response => {
-        if (!response.ok) throw new Error("Error al guardar el producto");
-        return response.text(); // o .json() si devuelves JSON
-      })
-      .then(resultado => {
-        console.log("Producto guardado correctamente:", resultado);
-        // Aquí puedes mostrar un mensaje o hacer otra cosa
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        alert("Hubo un problema al guardar el producto.");
-      });
-    }
-
-
-    function guardarProducto(nuevosDatos, file, callback) {
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          nuevosDatos['Imagen'] = reader.result;
-          callback(nuevosDatos);
-        };
-        reader.readAsDataURL(file);
-      } else {
-        callback(nuevosDatos);
-      }
-    }
-    
-    function crearTarjetaProducto(datos, contenedor) {
-      const card = document.createElement('div');
-      card.style.display = 'inline-block';
-      card.style.margin = '10px';
-      card.style.textAlign = 'center';
-      card.style.position = 'relative';
-      card.style.width = '120px';
-      card.style.borderRadius = '12px';
-      card.style.overflow = 'hidden';
-      card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-      card.style.cursor = 'pointer';
-    
-      card.onmouseenter = () => {
-        card.style.transform = 'scale(1.05)';
-        card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
-      };
-      card.onmouseleave = () => {
-        card.style.transform = 'scale(1)';
-        card.style.boxShadow = 'none';
-      };
-    
-      const img = document.createElement('img');
-      img.src = datos['Imagen'] || 'https://via.placeholder.com/100';
-      img.style.width = '100%';
-      img.style.height = '120px';
-      img.style.objectFit = 'contain';
-      img.style.background = '#fff';
-    
-      const info = document.createElement('div');
-      info.style.background = '#f4b6c2';
-      info.style.padding = '8px';
-      info.style.fontSize = '12px';
-      info.style.borderBottomLeftRadius = '12px';
-      info.style.borderBottomRightRadius = '12px';
-      info.innerHTML = `<strong>${datos['Código'] || ''}</strong><br>${datos['Nombre'] || ''}`;
-    
-      const eliminarBtn = document.createElement('button');
-      eliminarBtn.innerHTML = '🗑️';
-      eliminarBtn.style.position = 'absolute';
-      eliminarBtn.style.top = '5px';
-      eliminarBtn.style.right = '5px';
-      eliminarBtn.style.background = '#ff4d4d';
-      eliminarBtn.style.border = 'none';
-      eliminarBtn.style.color = '#fff';
-      eliminarBtn.style.borderRadius = '50%';
-      eliminarBtn.style.width = '28px';
-      eliminarBtn.style.height = '28px';
-      eliminarBtn.style.cursor = 'pointer';
-      eliminarBtn.onclick = (e) => {
-        e.stopPropagation();
-        if (confirm("¿Eliminar este producto?")) card.remove();
-      };
-    
-      card.dataset.producto = JSON.stringify(datos);
-    
-      card.onclick = () => {
-        const datosActuales = JSON.parse(card.dataset.producto);
-        abrirFormulario('', contenedor, datosActuales, card);
-      };
-    
-      card.appendChild(img);
-      card.appendChild(info);
-      card.appendChild(eliminarBtn);
-      contenedor.appendChild(card);
-    }
-    
-    function actualizarProducto(datos, card) {
-      const img = card.querySelector('img');
-      img.src = datos['Imagen'];
-    
-      const info = card.querySelector('div');
-      info.innerHTML = `<strong>${datos['Código'] || ''}</strong><br>${datos['Nombre'] || ''}`;
-    
-      card.dataset.producto = JSON.stringify(datos); // ✅ esto es lo que garantiza que se use el dato actualizado
-    }
-    
-    cerrarModalProducto.onclick = () => {
-      modalProducto.style.display = 'none';
+function guardarProducto(nuevosDatos, file, callback) {
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      nuevosDatos['Imagen'] = reader.result;
+      callback(nuevosDatos);
     };
-    
-    window.onclick = (e) => {
-      if (e.target == modalProducto) {
-        modalProducto.style.display = "none";
-      }
-    };
+    reader.readAsDataURL(file);
+  } else {
+    callback(nuevosDatos);
+  }
+}
 
-    function buscarProducto() {
-      alert("Función de búsqueda no implementada aún.");
-    }
-    
+function crearTarjetaProducto(datos, contenedor) {
+  const card = document.createElement('div');
+  card.style.display = 'inline-block';
+  card.style.margin = '10px';
+  card.style.textAlign = 'center';
+  card.style.position = 'relative';
+  card.style.width = '120px';
+  card.style.borderRadius = '12px';
+  card.style.overflow = 'hidden';
+  card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+  card.style.cursor = 'pointer';
+
+  card.onmouseenter = () => {
+    card.style.transform = 'scale(1.05)';
+    card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+  };
+  card.onmouseleave = () => {
+    card.style.transform = 'scale(1)';
+    card.style.boxShadow = 'none';
+  };
+
+  const img = document.createElement('img');
+  img.src = datos['Imagen'] || 'https://via.placeholder.com/100';
+  img.style.width = '100%';
+  img.style.height = '120px';
+  img.style.objectFit = 'contain';
+  img.style.background = '#fff';
+
+  const info = document.createElement('div');
+  info.style.background = '#f4b6c2';
+  info.style.padding = '8px';
+  info.style.fontSize = '12px';
+  info.style.borderBottomLeftRadius = '12px';
+  info.style.borderBottomRightRadius = '12px';
+  info.innerHTML = `<strong>${datos['Código'] || ''}</strong><br>${datos['Nombre'] || ''}`;
+
+  const eliminarBtn = document.createElement('button');
+  eliminarBtn.innerHTML = '🗑️';
+  eliminarBtn.style.position = 'absolute';
+  eliminarBtn.style.top = '5px';
+  eliminarBtn.style.right = '5px';
+  eliminarBtn.style.background = '#ff4d4d';
+  eliminarBtn.style.border = 'none';
+  eliminarBtn.style.color = '#fff';
+  eliminarBtn.style.borderRadius = '50%';
+  eliminarBtn.style.width = '28px';
+  eliminarBtn.style.height = '28px';
+  eliminarBtn.style.cursor = 'pointer';
+  eliminarBtn.onclick = (e) => {
+    e.stopPropagation();
+    if (confirm("¿Eliminar este producto?")) card.remove();
+  };
+
+  card.dataset.producto = JSON.stringify(datos);
+
+  card.onclick = () => {
+    const datosActuales = JSON.parse(card.dataset.producto);
+    abrirFormulario('', contenedor, datosActuales, card);
+  };
+
+  card.appendChild(img);
+  card.appendChild(info);
+  card.appendChild(eliminarBtn);
+  contenedor.appendChild(card);
+}
+
+function actualizarProducto(datos, card) {
+  const img = card.querySelector('img');
+  img.src = datos['Imagen'];
+
+  const info = card.querySelector('div');
+  info.innerHTML = `<strong>${datos['Código'] || ''}</strong><br>${datos['Nombre'] || ''}`;
+
+  card.dataset.producto = JSON.stringify(datos); // ✅ esto es lo que garantiza que se use el dato actualizado
+}
+
+cerrarModalProducto.onclick = () => {
+  modalProducto.style.display = 'none';
+};
+
+window.onclick = (e) => {
+  if (e.target == modalProducto) {
+    modalProducto.style.display = "none";
+  }
+};
+
+function buscarProducto() {
+  alert("Función de búsqueda no implementada aún.");
+}
+
+// Al cargar categorías:
+fetch('includes/backend/categorias_api.php')
+  .then(response => response.json())
+  .then(data => {
+    categorias = data;
     mostrarCategorias();
-    </script>
-    
-  
-  
-  
+  });
+</script>
 </body>
 </html>

@@ -1,19 +1,18 @@
 <?php
-function cargar_categoria(){
-    $nombre = [];
-    require_once '../conexiones.php';
-    $conexion = conectar();
-    $sql = "SELECT nombre_categoria FROM categorias";
-    $result = $conexion->query($sql);
-    if($result->num_rows > 0){
-        while($row = $result->fetch_assoc()){
-            $nombre[] = $row;
-        }
-    }
-    return $nombre;
-}
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+require_once '../conexiones.php';
 header('Content-Type: application/json');
-echo json_encode(cargar_categoria());
+
+$conexion = conectar();
+$sql = "SELECT id, nombre_categoria FROM categorias";
+$result = $conexion->query($sql);
+
+$categorias = [];
+if ($result && $result->num_rows > 0) {
+    while($row = $result->fetch_assoc()){
+        $categorias[] = $row;
+    }
+}
+
+echo json_encode($categorias);
+$conexion->close();
 ?>
