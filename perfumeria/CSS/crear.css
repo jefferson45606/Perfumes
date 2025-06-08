@@ -302,6 +302,12 @@ select:focus {
     flex-direction: column;
 }
 
+#modalContenido form label.imagen-label {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px;
+}
+
 #modalContenido form input {
     padding: 12px;
     border: 2px solid #ccc;
@@ -368,4 +374,8 @@ select:focus {
 #cerrarModal:hover,
 #cerrarModalProducto:hover {
     color: #d14662;
+}
+
+label > input[type="file"], label > span {
+  vertical-align: middle;
 }

@@ -69,14 +69,61 @@ let categoriaSeleccionadaId = null;
 fetch('includes/backend/categorias_api.php')
   .then(r => r.json())
   .then(data => {
-    categorias = data; // [{id: 1, nombre_categoria: "Dama"}, ...]
+    categorias = data;
     mostrarCategorias();
+
+    // CREA los contenedores de cada categoría
+    const tablasPorCategoria = document.getElementById('tablasPorCategoria');
+    tablasPorCategoria.innerHTML = ''; // <-- Limpia todo antes de crear los contenedores
+
+    categorias.forEach(categoria => {
+      mostrarTablaCategoria(categoria.nombre_categoria);
+    });
+
+    // Mostrar solo la primera categoría al inicio
+    if (categorias.length > 0) {
+      filtrarCategoria(categorias[0].nombre_categoria);
+    }
+
+    // CARGA los productos al inicio
+    fetch('includes/backend/productos_api.php')
+      .then(r => r.json())
+      .then(data => { // <-- aquí estaba el error
+        if (data.success) {
+          limpiarProductosDeCategorias(); // Esto solo elimina las tarjetas, no el botón
+          data.productos.forEach(producto => {
+            const categoria = categorias.find(cat => cat.id == producto.categoria_id);
+            if (categoria) {
+              const contenedor = document.getElementById(`contenedor-${categoria.nombre_categoria}`);
+              if (contenedor) {
+                crearTarjetaProducto({
+                  ...producto,
+                  Imagen: producto.imagen_url,
+                  Código: producto.codigo_producto,
+                  Nombre: producto.nombre_producto,
+                  Inspiración: producto.inspiracion,
+                  Casa: producto.casa,
+                  Descripción: producto.descripcion,
+                  Cantidad: producto.cantidad,
+                  Precio: producto.precio,
+                  'Precio 30ml': producto.precio_30ml,
+                  'Precio 60ml': producto.precio_60ml,
+                  'Precio 100ml': producto.precio_100ml,
+                  'Recarga 30ml': producto.recarga_30ml,
+                  'Recarga 60ml': producto.recarga_60ml,
+                  'Recarga 100ml': producto.recarga_100ml,
+                }, contenedor);
+              }
+            }
+          });
+        }
+      });
   });
 
 function mostrarCategorias() {
   const botonesCategorias = document.getElementById('botonesCategorias');
   botonesCategorias.innerHTML = '';
-  categorias.forEach(cat => {
+  categorias.forEach((cat, idx) => {
     const btn = document.createElement('button');
     btn.textContent = cat.nombre_categoria;
     btn.classList.add('boton-categoria');
@@ -85,10 +132,15 @@ function mostrarCategorias() {
       document.querySelectorAll('.boton-categoria').forEach(b => b.classList.remove('activo'));
       btn.classList.add('activo');
       categoriaSeleccionadaId = cat.id;
-      mostrarTablaCategoria(cat.nombre_categoria);
       filtrarCategoria(cat.nombre_categoria);
     };
     botonesCategorias.appendChild(btn);
+
+    // Selecciona la primera categoría por defecto
+    if (idx === 0) {
+      btn.classList.add('activo');
+      categoriaSeleccionadaId = cat.id;
+    }
   });
 }
 
@@ -113,7 +165,6 @@ function crearCategoria() {
     if (data.success && data.categoria) {
       categorias.push(data.categoria);
       mostrarCategorias();
-      mostrarTablaCategoria(data.categoria.nombre_categoria);
       input.value = '';
     } else {
       alert(data.message || "Ocurrió un error al guardar la categoría.");
@@ -127,9 +178,9 @@ function crearCategoria() {
 
 function filtrarCategoria(nombre) {
   categorias.forEach(cat => {
-    const contenedor = document.getElementById(`contenedor-${cat}`);
+    const contenedor = document.getElementById(`contenedor-${cat.nombre_categoria}`);
     if (contenedor) {
-      contenedor.style.display = (cat === nombre) ? 'block' : 'none';
+      contenedor.style.display = (cat.nombre_categoria === nombre) ? 'block' : 'none';
     }
   });
 }
@@ -140,28 +191,38 @@ function mostrarTablaCategoria(nombre) {
     contenedor = document.createElement('div');
     contenedor.id = `contenedor-${nombre}`;
     contenedor.style.marginTop = '20px';
-
-    const tarjeta = document.createElement('div');
-    tarjeta.textContent = '🛠️ Crea tu producto aquí';
-    tarjeta.style.cursor = 'pointer';
-    tarjeta.style.padding = '15px';
-    tarjeta.style.backgroundColor = '#e6486f';
-    tarjeta.style.color = '#fff';
-    tarjeta.style.borderRadius = '10px';
-    tarjeta.style.fontWeight = 'bold';
-    tarjeta.style.textAlign = 'center';
-    tarjeta.onmouseenter = () => tarjeta.style.backgroundColor = '#c53557';
-    tarjeta.onmouseleave = () => tarjeta.style.backgroundColor = '#e6486f';
-    tarjeta.onclick = () => abrirFormulario(nombre, contenedor);
-
-    contenedor.appendChild(tarjeta);
-    tablasPorCategoria.appendChild(contenedor);
+    document.getElementById('tablasPorCategoria').appendChild(contenedor);
+  } else {
+    // Limpia el contenedor completamente antes de agregar el botón
+    contenedor.innerHTML = '';
   }
 
-  filtrarCategoria(nombre);
+  // Solo agrega el botón si no existe ya (esto ahora siempre será cierto)
+  if (!contenedor.querySelector('.boton-crear-producto')) {
+    const botonCrear = document.createElement('div');
+    botonCrear.classList.add('boton-crear-producto');
+    botonCrear.textContent = '🛠️ Crea tu producto aquí';
+    botonCrear.style.cursor = 'pointer';
+    botonCrear.style.padding = '15px';
+    botonCrear.style.backgroundColor = '#e6486f';
+    botonCrear.style.color = '#fff';
+    botonCrear.style.borderRadius = '10px';
+    botonCrear.style.fontWeight = 'bold';
+    botonCrear.style.textAlign = 'center';
+    botonCrear.onmouseenter = () => botonCrear.style.backgroundColor = '#c53557';
+    botonCrear.onmouseleave = () => botonCrear.style.backgroundColor = '#e6486f';
+    botonCrear.onclick = () => abrirFormulario(nombre, contenedor);
+
+    contenedor.appendChild(botonCrear);
+  }
 }
 
 function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = null) {
+  // Corregido: Actualiza la categoría seleccionada al editar
+  if (datos && datos['categoria_id']) {
+    categoriaSeleccionadaId = datos['categoria_id'];
+  }
+
   modalContenido.innerHTML = '';
   const form = document.createElement('form');
   form.style.display = 'flex';
@@ -186,6 +247,9 @@ function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = 
 
     const label = document.createElement('label');
     label.textContent = campoNombre;
+    if (campoNombre === 'Imagen') {
+      label.classList.add('imagen-label');
+    }
 
     const input = document.createElement('input');
     input.name = campoNombre;
@@ -203,6 +267,32 @@ function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = 
 
     if (datos && campoNombre !== 'Imagen') {
       input.value = datos[campoNombre] || '';
+    }
+
+    if (campoNombre === 'Imagen' && datos && datos['Imagen']) {
+      label.classList.add('imagen-label');
+
+      // Campo oculto para manter a imagem existente se não for carregada uma nova
+      const hidden = document.createElement('input');
+      hidden.type = 'hidden';
+      hidden.name = 'ImagenExistente';
+      hidden.value = datos['Imagen'];
+      form.appendChild(hidden);
+
+      // Mostrar nome do arquivo existente DEPOIS do input
+      input.style.display = 'inline-block';
+      const nombreArchivo = document.createElement('span');
+      nombreArchivo.textContent = ' - ' + datos['Imagen'].split('/').pop();
+      nombreArchivo.style.fontSize = '12px';
+      nombreArchivo.style.color = '#555';
+
+      label.appendChild(input);
+      label.appendChild(nombreArchivo);
+      form.appendChild(label);
+
+      inputs[campoNombre] = input;
+
+      return;
     }
 
     inputs[campoNombre] = input;
@@ -258,7 +348,7 @@ function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = 
     for (const key in nuevosDatos) {
       formData.append(key, nuevosDatos[key]);
     }
-    // Aquí aseguramos que se envía el ID de la categoría seleccionada
+    // Corregido: Siempre envía el ID de la categoría seleccionada
     formData.append('categoria_id', categoriaSeleccionadaId);
 
     if (file) {
@@ -267,20 +357,13 @@ function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = 
       formData.append('ImagenExistente', datos['Imagen']);
     }
 
-    // Agregar precios y recargas al FormData
-    const valor30 = inputs['Precio 30ml'].value.trim();
-    const valor60 = inputs['Precio 60ml'].value.trim();
-    const valor100 = inputs['Precio 100ml'].value.trim();
-    const recarga30 = inputs['Recarga 30ml'].value.trim();
-    const recarga60 = inputs['Recarga 60ml'].value.trim();
-    const recarga100 = inputs['Recarga 100ml'].value.trim();
-
-    formData.append('precio_30ml', valor30);
-    formData.append('precio_60ml', valor60);
-    formData.append('precio_100ml', valor100);
-    formData.append('recarga_30ml', recarga30);
-    formData.append('recarga_60ml', recarga60);
-    formData.append('recarga_100ml', recarga100);
+    // Corregido: Envía correctamente los valores de recarga_100ml
+    formData.append('precio_30ml', inputs['Precio 30ml'].value.trim());
+    formData.append('precio_60ml', inputs['Precio 60ml'].value.trim());
+    formData.append('precio_100ml', inputs['Precio 100ml'].value.trim());
+    formData.append('recarga_30ml', inputs['Recarga 30ml'].value.trim());
+    formData.append('recarga_60ml', inputs['Recarga 60ml'].value.trim());
+    formData.append('recarga_100ml', inputs['Recarga 100ml'].value.trim());
 
     fetch('includes/backend/producto_save.php', {
       method: 'POST',
@@ -351,7 +434,11 @@ function crearTarjetaProducto(datos, contenedor) {
   };
 
   const img = document.createElement('img');
-  img.src = datos['Imagen'] || 'https://via.placeholder.com/100';
+  let rutaImagen = datos['Imagen'];
+  if (rutaImagen && !rutaImagen.startsWith('http')) {
+    rutaImagen = 'includes/backend/' + rutaImagen;
+  }
+  img.src = rutaImagen || 'https://via.placeholder.com/100';
   img.style.width = '100%';
   img.style.height = '120px';
   img.style.objectFit = 'contain';
@@ -397,7 +484,11 @@ function crearTarjetaProducto(datos, contenedor) {
 
 function actualizarProducto(datos, card) {
   const img = card.querySelector('img');
-  img.src = datos['Imagen'];
+  let rutaImagen = datos['Imagen'];
+  if (rutaImagen && !rutaImagen.startsWith('http')) {
+    rutaImagen = 'includes/backend/' + rutaImagen;
+  }
+  img.src = rutaImagen || 'https://via.placeholder.com/100';
 
   const info = card.querySelector('div');
   info.innerHTML = `<strong>${datos['Código'] || ''}</strong><br>${datos['Nombre'] || ''}`;
@@ -415,17 +506,124 @@ window.onclick = (e) => {
   }
 };
 
-function buscarProducto() {
-  alert("Función de búsqueda no implementada aún.");
+function limpiarProductosDeCategorias() {
+  categorias.forEach(cat => {
+    const contenedor = document.getElementById(`contenedor-${cat.nombre_categoria}`);
+    if (contenedor) {
+      // Elimina todo menos el botón de crear producto
+      Array.from(contenedor.children).forEach(child => {
+        if (!child.classList.contains('boton-crear-producto')) {
+          contenedor.removeChild(child);
+        }
+      });
+    }
+  });
 }
 
-// Al cargar categorías:
-fetch('includes/backend/categorias_api.php')
-  .then(response => response.json())
-  .then(data => {
-    categorias = data;
-    mostrarCategorias();
-  });
+function buscarProducto() {
+  const valor = document.getElementById('BuscarProducto').value.trim();
+  if (valor === '') {
+    // Si está vacío, recarga todos los productos normalmente y muestra solo la primera categoría
+    fetch('includes/backend/productos_api.php')
+      .then(r => r.json())
+      .then(data => {
+        if (data.success) {
+          limpiarProductosDeCategorias();
+          data.productos.forEach(producto => {
+            const categoria = categorias.find(cat => cat.id == producto.categoria_id);
+            if (categoria) {
+              const contenedor = document.getElementById(`contenedor-${categoria.nombre_categoria}`);
+              if (contenedor) {
+                crearTarjetaProducto({
+                  ...producto,
+                  Imagen: producto.imagen_url,
+                  Código: producto.codigo_producto,
+                  Nombre: producto.nombre_producto,
+                  Inspiración: producto.inspiracion,
+                  Casa: producto.casa,
+                  Descripción: producto.descripcion,
+                  Cantidad: producto.cantidad,
+                  Precio: producto.precio,
+                  'Precio 30ml': producto.precio_30ml,
+                  'Precio 60ml': producto.precio_60ml,
+                  'Precio 100ml': producto.precio_100ml,
+                  'Recarga 30ml': producto.recarga_30ml,
+                  'Recarga 60ml': producto.recarga_60ml,
+                  'Recarga 100ml': producto.recarga_100ml,
+                }, contenedor);
+              }
+            }
+          });
+          // Mostrar solo la primera categoría
+          if (categorias.length > 0) {
+            filtrarCategoria(categorias[0].nombre_categoria);
+          }
+        }
+      });
+    return;
+  }
+
+  // Si es número, busca por código. Si es texto, busca por nombre (parcial)
+  const esNumero = !isNaN(valor);
+  fetch('includes/backend/productos_api.php')
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        limpiarProductosDeCategorias();
+
+        let resultados = [];
+        if (esNumero) {
+          resultados = data.productos.filter(p => String(p.codigo_producto) === valor);
+        } else {
+          resultados = data.productos.filter(p =>
+            p.nombre_producto.toLowerCase().includes(valor.toLowerCase())
+          );
+        }
+
+        // Oculta todos los contenedores de categoría
+        categorias.forEach(cat => {
+          const contenedor = document.getElementById(`contenedor-${cat.nombre_categoria}`);
+          if (contenedor) contenedor.style.display = 'none';
+        });
+
+        // Elimina el contenedor de resultados anteriores si existe
+        let contenedorResultados = document.getElementById('contenedor-resultados-busqueda');
+        if (contenedorResultados) contenedorResultados.remove();
+
+        // Crea un nuevo contenedor para los resultados
+        contenedorResultados = document.createElement('div');
+        contenedorResultados.id = 'contenedor-resultados-busqueda';
+        contenedorResultados.style.marginTop = '20px';
+        document.getElementById('tablasPorCategoria').appendChild(contenedorResultados);
+
+        if (resultados.length === 0) {
+          contenedorResultados.innerHTML = '<div style="padding:20px; color:#d14662; font-weight:bold;">No se encontraron productos.</div>';
+          return;
+        }
+
+        // Muestra solo los productos encontrados
+        resultados.forEach(producto => {
+          crearTarjetaProducto({
+            ...producto,
+            Imagen: producto.imagen_url,
+            Código: producto.codigo_producto,
+            Nombre: producto.nombre_producto,
+            Inspiración: producto.inspiracion,
+            Casa: producto.casa,
+            Descripción: producto.descripcion,
+            Cantidad: producto.cantidad,
+            Precio: producto.precio,
+            'Precio 30ml': producto.precio_30ml,
+            'Precio 60ml': producto.precio_60ml,
+            'Precio 100ml': producto.precio_100ml,
+            'Recarga 30ml': producto.recarga_30ml,
+            'Recarga 60ml': producto.recarga_60ml,
+            'Recarga 100ml': producto.recarga_100ml,
+          }, contenedorResultados);
+        });
+      }
+    });
+}
 </script>
 </body>
 </html>

@@ -61,7 +61,7 @@ if ($resultado->num_rows > 0) {
         WHERE codigo_producto = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
-        "sssssiddddddis",
+        "sssssiddddddisi",
         $imagen_url, $nombre_producto, $inspiracion, $casa, $descripcion, $cantidad,
         $precio,
         $precio_30ml, $precio_60ml, $precio_100ml,

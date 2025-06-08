@@ -21,3 +21,145 @@ Array
     [recarga_60ml] => 2
     [recarga_100ml] => 3
 )
+Array
+(
+    [Código] => 1
+    [Nombre] => papa
+    [Inspiración] => de la casa
+    [Casa] => de la inspiracion
+    [Descripción] => se come
+    [Cantidad] => 1
+    [Precio] => 1
+    [Precio_30ml] => 1
+    [Precio_60ml] => 2
+    [Precio_100ml] => 3
+    [Recarga_30ml] => 1
+    [Recarga_60ml] => 2
+    [Recarga_100ml] => 5
+    [categoria_id] => 1
+    [ImagenExistente] => uploads/6845b0e5177be_ - Discord 5_12_2024 9_48_16 p. m. (1).png
+    [precio_30ml] => 1
+    [precio_60ml] => 2
+    [precio_100ml] => 3
+    [recarga_30ml] => 1
+    [recarga_60ml] => 2
+    [recarga_100ml] => 5
+)
+Array
+(
+    [Código] => 1
+    [Nombre] => papa
+    [Inspiración] => de la casa
+    [Casa] => de la inspiracion
+    [Descripción] => se come
+    [Cantidad] => 1
+    [Precio] => 1
+    [Precio_30ml] => 1
+    [Precio_60ml] => 45
+    [Precio_100ml] => 3
+    [Recarga_30ml] => 1
+    [Recarga_60ml] => 2
+    [Recarga_100ml] => 5
+    [categoria_id] => 1
+    [ImagenExistente] => uploads/6845b0e5177be_ - Discord 5_12_2024 9_48_16 p. m. (1).png
+    [precio_30ml] => 1
+    [precio_60ml] => 45
+    [precio_100ml] => 3
+    [recarga_30ml] => 1
+    [recarga_60ml] => 2
+    [recarga_100ml] => 5
+)
+Array
+(
+    [Código] => 3
+    [Nombre] => platano
+    [Inspiración] => de la casa
+    [Casa] => de la inspiracion
+    [Descripción] => se come
+    [Cantidad] => 1
+    [Precio] => 1
+    [Precio_30ml] => 1
+    [Precio_60ml] => 2
+    [Precio_100ml] => 3
+    [Recarga_30ml] => 1
+    [Recarga_60ml] => 2
+    [Recarga_100ml] => 3
+    [categoria_id] => 1
+    [precio_30ml] => 1
+    [precio_60ml] => 2
+    [precio_100ml] => 3
+    [recarga_30ml] => 1
+    [recarga_60ml] => 2
+    [recarga_100ml] => 3
+)
+Array
+(
+    [Código] => 3
+    [Nombre] => platano
+    [Inspiración] => de la casa
+    [Casa] => de la inspiracion
+    [Descripción] => se come
+    [Cantidad] => 1
+    [Precio] => 1
+    [Precio_30ml] => 1
+    [Precio_60ml] => 2
+    [Precio_100ml] => 3
+    [Recarga_30ml] => 1
+    [Recarga_60ml] => 2
+    [Recarga_100ml] => 7
+    [categoria_id] => 1
+    [ImagenExistente] => uploads/6845c70922535_ - Discord 5_12_2024 9_48_17 p. m..png
+    [precio_30ml] => 1
+    [precio_60ml] => 2
+    [precio_100ml] => 3
+    [recarga_30ml] => 1
+    [recarga_60ml] => 2
+    [recarga_100ml] => 7
+)
+Array
+(
+    [Código] => 1
+    [Nombre] => papa
+    [Inspiración] => de la casa
+    [Casa] => de la inspiracion
+    [Descripción] => se come
+    [Cantidad] => 1
+    [Precio] => 1
+    [Precio_30ml] => 1
+    [Precio_60ml] => 45
+    [Precio_100ml] => 3
+    [Recarga_30ml] => 1
+    [Recarga_60ml] => 2
+    [Recarga_100ml] => 3
+    [categoria_id] => 1
+    [ImagenExistente] => uploads/6845b0e5177be_ - Discord 5_12_2024 9_48_16 p. m. (1).png
+    [precio_30ml] => 1
+    [precio_60ml] => 45
+    [precio_100ml] => 3
+    [recarga_30ml] => 1
+    [recarga_60ml] => 2
+    [recarga_100ml] => 3
+)
+Array
+(
+    [Código] => 2
+    [Nombre] => colesterol
+    [Inspiración] => de la casa
+    [Casa] => de la inspiracion
+    [Descripción] => se come
+    [Cantidad] => 1
+    [Precio] => 1
+    [Precio_30ml] => 1
+    [Precio_60ml] => 2
+    [Precio_100ml] => 3
+    [Recarga_30ml] => 1
+    [Recarga_60ml] => 2
+    [Recarga_100ml] => 3
+    [categoria_id] => 2
+    [precio_30ml] => 1
+    [precio_60ml] => 2
+    [precio_100ml] => 3
+    [recarga_30ml] => 1
+    [recarga_60ml] => 2
+    [recarga_100ml] => 3
+)
