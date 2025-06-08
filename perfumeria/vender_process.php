@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener producto y nombre
     $stmt = $conn->prepare("SELECT id, nombre_producto FROM productos WHERE codigo_producto = ?");
     $stmt->bind_param('s', $codigo);
-    $stmt->execute();
+    $stmt->execute(); 
     $stmt->bind_result($prodId, $prodName);
     if (!$stmt->fetch()) {
         $_SESSION['vender_msg'] = 'Código de producto no encontrado.';

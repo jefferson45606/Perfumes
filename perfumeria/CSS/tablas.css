@@ -94,7 +94,7 @@ body {
     color: #333333;
     cursor: pointer;
     text-decoration: none;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease; 
 }
 
 .menu-buttons a:hover,

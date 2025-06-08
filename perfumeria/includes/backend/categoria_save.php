@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dato'])) {
         $stmt = $conn->prepare("INSERT INTO categorias (nombre_categoria) VALUES (?)");
         $stmt->bind_param("s", $categoria);
         if ($stmt->execute()) {
-            $id = $conn->insert_id;
+            $id = $conn->insert_id; 
             echo json_encode([
                 'success' => true,
                 'categoria' => [

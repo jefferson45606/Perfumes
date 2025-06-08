@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"> 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,7 @@
   <div class="container">
     <aside class="logo-section">
       <img src="IMG/Su_Aroma.png" alt="Logo Su Aroma" />
-      <nav class="menu-buttons">
+      <nav class="menu-buttons"> 
         <ul>
           <li><a href="vender.php" class="menu-buttons">VENDER</a></li>
           <li><a href="catalogo.php" class="menu-buttons">CATÁLOGO</a></li>

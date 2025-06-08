@@ -13,7 +13,7 @@
 <body>
   <div class="container">
     <aside class="logo-section">
-      <img src="IMG/Su_Aroma.png" alt="Logo Su Aroma" />
+      <img src="IMG/Su_Aroma.png" alt="Logo Su Aroma" /> 
       <nav class="menu-buttons">
         <ul>
           <li><a href="vender.php" class="menu-buttons">VENDER</a></li>

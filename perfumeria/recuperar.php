@@ -12,7 +12,7 @@
             <img src="IMG/Su_Aroma.png" alt="Logo Su Aroma" class="logo">
         </div>
         <div class="login-section">
-            <h2 class="title">RECUPERAR<br>CONTRASEÑA</h2>
+            <h2 class="title">RECUPERAR<br>CONTRASEÑA</h2> 
             <form onsubmit="verificador(event)">
                 <label for="codigo">CÓDIGO DE RECUPERACIÓN</label>
                 <input type="text" id="codigo" placeholder="1SE55N4">
@@ -41,7 +41,7 @@
 
             if (hashHex === "cc7980b11a556d770cc02bf632b7b8daac4ac1657d14ecfbc9fdc216994848d5") {
                 if (contraseña !== "") {
-                    fetch('includes/backend/cargar_n_contraseña.php', {
+                    fetch('includes/backend/cargar_n_contraseña.php', { 
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'

@@ -14,7 +14,7 @@
                 <ul>
                     <li><a href="vender.php" class="menu-buttons">VENDER</a></li>
                     <li><a href="catalogo.php" class="menu-buttons">CATÁLOGO</a></li>
-                    <li><a href="inventario.php" class="menu-buttons active">INVENTARIO</a></li>
+                    <li><a href="inventario.php" class="menu-buttons active">INVENTARIO</a></li> 
                     <li><a href="crear.php" class="menu-buttons">CREAR</a></li>
                     <li><a href="informe.php" class="menu-buttons">INFORMES</a></li>
                 </ul>

@@ -17,7 +17,7 @@ $msg = ''; //es para almacenar mensajes de error o exito
 
 // si hace falta alguno de los campos, devolvemos un error
 if ($usuario === '' || $password === '') { //por si se deja un campo vacio
-    $msg = 'Por favor completa todos los campos.';
+    $msg = 'Por favor completa todos los campos.'; 
 } else {
     // preparamos la consulta para buscar la contraseña del usuario en la BD
     $sql = "SELECT contraseña FROM administrador WHERE usuario = ?"; //<- parametro de consulta, el "?" se reemplazará por el valor de $usuario

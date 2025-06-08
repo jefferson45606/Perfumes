@@ -13,7 +13,7 @@ session_start();
 <body>
     <div class="container">
         <div class="logo-section">
-            <img src="IMG/Su_Aroma.png" alt="Logo Su Aroma" class="logo">
+            <img src="IMG/Su_Aroma.png" alt="Logo Su Aroma" class="logo"> 
         </div>
 
         <div class="login-section">

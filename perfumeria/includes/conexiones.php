@@ -1,8 +1,8 @@
 <?php
-function conectar(){
+function conectar(){ 
     // conexion a la base de datos
     $server="localhost";
-    $user="proyecto";
+    $user="proyecto"; 
     $pass="FICHA_2826320";
     $bd="perfumeria";
 

@@ -97,7 +97,7 @@ include 'includes/conexion.php';
                 <div class="form-group full-width">
                     <button type="submit" name="vender" value="1">Vender</button>
                 </div>
-            </form>
+            </form> 
 
             <!-- Apartado de cierre de sesion -->
             <a class="logout" href="logout.php">Cerrar sesión</a>

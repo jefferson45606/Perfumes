@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . '/../conexiones.php';
-header('Content-Type: application/json');
+header('Content-Type: application/json'); 
 
 $conn = conectar();
 if ($conn->connect_error) {
@@ -12,7 +12,7 @@ $sql = "SELECT * FROM productos";
 $result = $conn->query($sql);
 
 $productos = [];
-while ($row = $result->fetch_assoc()) {
+while ($row = $result->fetch_assoc()) { 
     $productos[] = $row;
 }
 

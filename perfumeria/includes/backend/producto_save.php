@@ -49,7 +49,7 @@ $sql_verificar = "SELECT * FROM productos WHERE codigo_producto = ?";
 $stmt = $conn->prepare($sql_verificar);
 $stmt->bind_param("s", $codigo_producto);
 $stmt->execute();
-$resultado = $stmt->get_result();
+$resultado = $stmt->get_result(); 
 
 if ($resultado->num_rows > 0) {
     // UPDATE
@@ -59,7 +59,7 @@ if ($resultado->num_rows > 0) {
         precio_30ml = ?, precio_60ml = ?, precio_100ml = ?, 
         recarga_30ml = ?, recarga_60ml = ?, recarga_100ml = ?, categoria_id = ?
         WHERE codigo_producto = ?";
-    $stmt = $conn->prepare($sql);
+    $stmt = $conn->prepare($sql); 
     $stmt->bind_param(
         "sssssiddddddisi",
         $imagen_url, $nombre_producto, $inspiracion, $casa, $descripcion, $cantidad,

@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 
 $conexion = conectar();
 $sql = "SELECT id, nombre_categoria FROM categorias";
-$result = $conexion->query($sql);
+$result = $conexion->query($sql); 
 
 $categorias = [];
 if ($result && $result->num_rows > 0) {
