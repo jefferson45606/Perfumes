@@ -32,7 +32,7 @@ $imagen_url = null;// Inicializar la variable de la URL de la imagen
 if (!empty($_FILES['imagen']['name'])) {// Verificar si se ha subido una imagen
     $imagen_nombre = basename($_FILES['imagen']['name']);// Obtener el nombre del archivo de la imagen
     $imagen_tmp = $_FILES['imagen']['tmp_name'];// Obtener la ruta temporal del archivo de la imagen
-    $directorio = 'uploads/';// Definir el directorio donde se guardarán las imágenes
+    $directorio = '../../uploads/';// Definir el directorio donde se guardarán las imágenes
     if (!is_dir($directorio)) {// Verificar si el directorio existe
         mkdir($directorio, 0777, true);// Si no existe, crear el directorio con permisos 0777
     }
@@ -61,7 +61,7 @@ if ($resultado->num_rows > 0) {// Si el producto ya existe
         WHERE codigo_producto = ?";
     $stmt = $conn->prepare($sql); // Preparar la sentencia SQL para actualizar el producto
     $stmt->bind_param(
-        "sssssiddddddisi",
+        "sssssiddddddisi",// Vincular los parámetros de la sentencia preparada
         $imagen_url, $nombre_producto, $inspiracion, $casa, $descripcion, $cantidad,
         $precio,
         $precio_30ml, $precio_60ml, $precio_100ml,
