@@ -1,157 +1,177 @@
+/*Sirve para importar la fuente “Poppins” desde Google Fonts al css*/
+/*basicamente sirve para hacer que todos los textos usen la fuente Poppins*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+
+/*esto * es un selector de css que selecciona todos los elementos del documento*/
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; 
-    font-family: 'Poppins', sans-serif;
+    margin: 0; /*elimina el margen exterior de todos los elementos es como un lienzo limpio para dieseñar 
+                    sin las margenes del navegador.*/
+    padding: 0; /*elimina el "relleno" interior de todos los elementos.*/
+    box-sizing: border-box; /*hace que el tamaño de los elementos se ajuste al contenedor.*/
+    font-family: 'Poppins', sans-serif; /*cambia el tipo de letra de los elementos a Poppins*/
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #8e949c; 
-    animation: fadeIn 1s ease-in;
-    overflow: hidden;
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    justify-content: center; /*centra el contenido horizontalmente.*/
+    align-items: center; /*centra el contenido verticalmente.*/
+    height: 100vh; /*establece el alto y el ancho de la página.*/
+    background-color: #8e949c; /*cambia el fondo de la página.*/
+    animation: fadeIn 1s ease-in; /*anima la página en un instante.*/
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.98);
+@keyframes fadeIn { /*anima la página en un instante.*/
+    from { /*cuando la animación comienza, establece el estado inicial.*/
+        opacity: 0; /*establece la opacidad a 0.*/
+        transform: scale(0.98); /*establece el tamaño a 0.98.*/
+    } /*cuando la animación termina, establece el estado final.*/
+    to { 
+        opacity: 1; /*establece la opacidad a 1.*/
+        transform: scale(1); /*establece el tamaño a 1.*/
+    } 
+}
+
+/*estilos para el contenedor principal*/
+.container { /*establece el tamaño y el fondo de la página.*/
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    width: 1000px; /*establece el ancho de la página.*/
+    height: 600px; /*establece el alto de la página.*/
+    background: #ffffff; /*establece el fondo de la página.*/
+    border-radius: 10px; /*establece el borde de la página.*/
+    overflow: hidden; /*oculta el contenido que no cabe dentro de la página.*/
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /*establece un efecto de sombra.*/
+    animation: slideUp 0.8s ease; /*anima la página en un instante.*/
+} 
+
+/*anima la página*/
+@keyframes slideUp { 
+    from { 
+        transform: translateY(30px); /*establece el tamaño a 30px.*/
+        opacity: 0; /*establece la opacidad a 0.*/
     }
     to {
-        opacity: 1;
-        transform: scale(1);
+        transform: translateY(0); /*establece el tamaño a 0.*/
+        opacity: 1; /*establece la opacidad a 1.*/
     }
 }
 
-.container {
-    display: flex;
-    width: 1000px;
-    height: 600px;
-    background: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    animation: slideUp 0.8s ease;
+/*estilos para el logo*/
+.logo-section { /*establece el tamaño y el fondo de la página.*/
+    width: 50%; /*establece el ancho del recuadro del logo.*/
+    background: #f4b6c2; /*establece el fondo del logo.*/
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    justify-content: center; /*centra el contenido horizontalmente.*/
+    align-items: center; /*centra el contenido verticalmente.*/
+    transition: background 0.4s ease; /*anima la página en un instante.*/
 }
 
-@keyframes slideUp {
-    from {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+/*estilos para el logo*/
+.logo-section:hover { 
+    background: #f292b4;  /*cambia el fondo del logo al pasar el mouse por encima.*/
 }
 
-.logo-section {
-    width: 50%;
-    background: #f4b6c2; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background 0.4s ease;
-}
-
-.logo-section:hover {
-    background: #f292b4; 
-}
-
+/*estilos para el logo*/
 .logo-section img {
-    width: 70%;
-    transition: transform 0.3s ease;
+    width: 70%; /*establece el ancho del logo.*/
+    transition: transform 0.3s ease; /*anima la página en un instante.*/
 }
 
 .logo-section img:hover {
     transform: scale(1.05);
 }
 
+/*estilos para el login*/
 .login-section {
-    width: 50%;
-    background: #e6dbdb; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 40px;
-    transition: background 0.3s ease;
-    overflow-y: auto;
+    width: 50%; /*establece el ancho del recuadro de login.*/
+    background: #e6dbdb; /*establece el fondo del login.*/
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    flex-direction: column; /*hace que el contenido se muestre en columnas.*/
+    justify-content: center; /*centra el contenido horizontalmente.*/
+    padding: 40px; /*establece el espacio entre el contenido y el borde del recuadro.*/
+    transition: background 0.3s ease; /*anima la página en un instante.*/
+    overflow-y: auto; /*permite el desplazamiento vertical si el contenido es demasiado grande*/
 }
 
+/*estilos para el login*/
 .title {
-    font-size: 24px;
-    font-weight: 600;
-    text-align: left;
-    color: #333333;
-    margin-bottom: 20px;
+    font-size: 24px; /*establece el tamaño de la fuente del título.*/
+    font-weight: 600; /*establece el peso de la fuente del título.*/
+    text-align: left; /*alinea el texto a la izquierda.*/
+    color: #333333; /*cambia el color del texto del título.*/
+    margin-bottom: 20px; /*añade un margen inferior al título para separar del formulario*/
 }
 
+/*estilos para el login*/
 form {
-    display: flex;
-    flex-direction: column;
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    flex-direction: column; /*hace que el contenido se muestre en columnas.*/
 }
 
+/*estilos para las etiquetas*/
 label {
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333333;
+    font-size: 12px; /*establece el tamaño de la fuente de las etiquetas.*/
+    font-weight: bold; /*establece el peso de la fuente de las etiquetas.*/ 
+    margin-bottom: 5px; /*establece el espacio entre las etiquetas y el siguiente elemento.*/
+    color: #333333; /*cambia el color de las etiquetas (usuario, contraseña, etc.).*/
 }
 
+/*estilos para el login*/
 input {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background: #cfcfcf;
-    margin-bottom: 15px;
-    font-size: 14px;
-    color: #333333;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    padding: 10px; /*establece el espacio entre el borde del recuadro y el contenido del recuadro.*/
+    border: none; /*elimina el borde del recuadro.*/
+    border-radius: 5px; /*establece el borde del recuadro.*/
+    background: #cfcfcf; /*establece el fondo del recuadro.*/
+    margin-bottom: 15px; /*establece el espacio entre el recuadro y el siguiente elemento.*/
+    font-size: 14px; /*establece el tamaño de la fuente del recuadro.*/
+    color: #333333; /*cambia el color del recuadro.*/
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /*anima la página en un instante.*/
 }
 
+/*estilos para el login*/
 input:focus {
-    outline: none;
-    box-shadow: 0 0 5px #af223e;
-    transform: scale(1.02);
+    outline: none; /*elimina el borde del recuadro al hacer clic en él.*/
+    box-shadow: 0 0 5px #af223e; /*establece un efecto de sombra al hacer clic en el recuadro.*/
+    transform: scale(1.02); /*aumenta el tamaño del recuadro al hacer clic en él.*/
 }
 
+/*estilos para el login*/
 button {
-    background: #d14662; 
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s ease, transform 0.3s ease;
+    background: #d14662; /*establece el fondo del botón entrar.*/
+    padding: 12px; /*establece el espacio entre el borde del botón y el contenido del botón.*/
+    border: none; /*elimina el borde del botón.*/
+    border-radius: 5px; /*establece el borde del botón.*/
+    font-size: 14px; /*establece el tamaño de la fuente del botón entrar.*/
+    cursor: pointer; /*cambia el cursor al pasar el mouse por encima del botón.*/
+    margin-top: 10px; /*establece el espacio entre el botón y el siguiente elemento.*/
+    transition: background 0.3s ease, transform 0.3s ease; /*anima la página en un instante.*/
 }
 
+/*estilos para el login*/
 button:hover {
-    background: #a00e41; 
-    transform: translateY(-2px);
+    background: #a00e41; /*cambia el fondo del botón entrar al pasar el mouse por encima.*/
+    transform: translateY(-2px); /*desplaza el botón hacia abajo.*/
 }
 
+/*estilos para el login*/
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 10px; /*establece el ancho del scrollbar.*/
 }
 
+/*estilos para el login*/
 ::-webkit-scrollbar-track {
-    background: #e6dbdb;
-    border-radius: 5px;
+    background: #e6dbdb; /*establece el fondo del scrollbar.*/
+    border-radius: 5px; /*establece el borde del scrollbar.*/
 }
 
+/*estilos para el login*/
 ::-webkit-scrollbar-thumb {
-    background-color: #d14662;
-    border-radius: 5px;
-    border: 2px solid #e6dbdb;
+    background-color: #d14662; /*establece el fondo del scrollbar.*/
+    border-radius: 5px; /*establece el borde del scrollbar.*/
+    border: 2px solid #e6dbdb; /*establece el borde del scrollbar.*/
 }
 
+/*estilos para el login*/
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #a00e41;
+    background-color: #a00e41; /*cambia el color del scrollbar al pasar el mouse por encima.*/
 }
