@@ -1,9 +1,0 @@
-RewriteEngine On
-
-# Si la URL es algo como /catalogo y existe el archivo catalogo.php
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^([^/]+)$ $1.php [L]
-
-# Hace que / cargue index.php automáticamente
-DirectoryIndex index.php
