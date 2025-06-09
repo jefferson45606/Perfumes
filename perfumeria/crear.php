@@ -436,7 +436,7 @@ function crearTarjetaProducto(datos, contenedor) {
   const img = document.createElement('img');
   let rutaImagen = datos['Imagen'];
   if (rutaImagen && !rutaImagen.startsWith('http')) {
-    rutaImagen = 'includes/backend/' + rutaImagen;
+    rutaImagen = 'uploads/' + rutaImagen.replace(/^uploads[\/\\]/, '');
   }
   img.src = rutaImagen || 'https://via.placeholder.com/100';
   img.style.width = '100%';

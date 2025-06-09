@@ -163,3 +163,234 @@ Array
     [recarga_60ml] => 2
     [recarga_100ml] => 3
 )
+Array
+(
+    [Código] => 001
+    [Nombre] => NAUTILUS
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana, loto indio, madera de cedro y almizcle, ideal para uso diario, 3.3 fl oz (100 ml)
+    [Cantidad] => 5
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 001
+    [Nombre] => NAUTILUS
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana
+    [Cantidad] => 5
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [ImagenExistente] => uploads/6845f402013ed_NAUTICAV-voyage.jpg
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 001
+    [Nombre] => NAUTILUS
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana
+    [Cantidad] => 5
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 001
+    [Nombre] => NAUTILUS
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana
+    [Cantidad] => 5
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 002
+    [Nombre] => NIÑA
+    [Inspiración] => by Nina Ricci
+    [Casa] => Nina
+    [Descripción] => Inspirado en una manzana de caramelo y con notas de limón, gardenia y madera de cedro,
+    [Cantidad] => 5
+    [Precio] => 5000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 2
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 001
+    [Nombre] => NAUTILUS
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana
+    [Cantidad] => 5
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 001
+    [Nombre] => NAUTILUS
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana
+    [Cantidad] => 5
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 002
+    [Nombre] => NIÑA
+    [Inspiración] => by Nina Ricci
+    [Casa] => Nina
+    [Descripción] => Inspirado en una manzana de caramelo y con notas de limón, gardenia y madera de cedro,
+    [Cantidad] => 5
+    [Precio] => 5000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 2
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 002
+    [Nombre] => NIÑA
+    [Inspiración] => by Nina Ricci
+    [Casa] => Nina
+    [Descripción] => Inspirado en una manzana de caramelo y con notas de limón, gardenia y madera de cedro,
+    [Cantidad] => 4
+    [Precio] => 5000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 2
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 001
+    [Nombre] => NAUTILUS
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana
+    [Cantidad] => 2
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
