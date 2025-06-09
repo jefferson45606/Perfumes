@@ -1,290 +1,306 @@
+/*Sirve para importar la fuente “Poppins” desde Google Fonts al css*/
+/*basicamente sirve para hacer que todos los textos usen la fuente Poppins*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+/*esto * es un selector de css que selecciona todos los elementos del documento*/
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    margin: 0; /*elimina el margen exterior de todos los elementos es como un lienzo limpio para dieseñar 
+                    sin las margenes del navegador.*/
+    padding: 0; /*elimina el "relleno" interior de todos los elementos.*/
+    box-sizing: border-box; /*hace que el tamaño de los elementos se ajuste al contenedor.*/
+    font-family: 'Poppins', sans-serif; /*cambia el tipo de letra de los elementos a Poppins*/
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #8e949c;
-    animation: fadeIn 1s ease-in;
-    text-align: center;
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    justify-content: center; /*centra el contenido horizontalmente.*/
+    align-items: center; /*centra el contenido verticalmente.*/
+    height: 100vh; /*establece el alto y el ancho de la página.*/
+    background-color: #8e949c; /*cambia el fondo de la página.*/
+    animation: fadeIn 1s ease-in; /*anima la página en un instante.*/
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.98);
+@keyframes fadeIn { /*anima la página en un instante.*/
+    from { /*cuando la animación comienza, establece el estado inicial.*/
+        opacity: 0; /*establece la opacidad a 0.*/
+        transform: scale(0.98); /*establece el tamaño a 0.98.*/
+    } /*cuando la animación termina, establece el estado final.*/
+    to { 
+        opacity: 1; /*establece la opacidad a 1.*/
+        transform: scale(1); /*establece el tamaño a 1.*/
+    } 
+}
+
+/*estilos para el contenedor principal*/
+.container { /*establece el tamaño y el fondo de la página.*/
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    width: 1000px; /*establece el ancho de la página.*/
+    height: 600px; /*establece el alto de la página.*/
+    background: #ffffff; /*establece el fondo de la página.*/
+    border-radius: 10px; /*establece el borde de la página.*/
+    overflow: hidden; /*oculta el contenido que no cabe dentro de la página.*/
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /*establece un efecto de sombra.*/
+    animation: slideUp 0.8s ease; /*anima la página en un instante.*/
+} 
+
+/*anima la página*/
+@keyframes slideUp { 
+    from { 
+        transform: translateY(30px); /*establece el tamaño a 30px.*/
+        opacity: 0; /*establece la opacidad a 0.*/
     }
     to {
-        opacity: 1;
-        transform: scale(1);
+        transform: translateY(0); /*establece el tamaño a 0.*/
+        opacity: 1; /*establece la opacidad a 1.*/
     }
 }
 
-.container {
-    display: flex;
-    width: 1000px;
-    height: 600px;
-    background: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    animation: slideUp 0.8s ease;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
+/*estilos para el logo*/
 .logo-section {
-    width: 35%;
-    background: #f4b6c2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-    transition: background 0.4s ease;
+    width: 35%; /*establece el ancho del recuadro del logo.*/
+    background: #f4b6c2; /*establece el fondo del recuadro del logo.*/
+    display: flex; /*hace que el contenido se muestre en columnas.*/
+    flex-direction: column; /*hace que el contenido se muestre en columnas.*/
+    justify-content: center; /*centra el contenido verticalmente*/
+    padding: 20px; /* agrega un poco de espacio alrededor del logo */
+    transition: background 0.4s ease; /*anima la página en un instante.*/
 }
 
+/*estilos para el logo*/
 .logo-section:hover {
-    background: #f292b4;
+    background: #f292b4; /*cambia el fondo del recuadro del logo al pasar el mouse por encima.*/
 }
 
 .logo-section img {
     width: 75%;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; /*anima la imagen del logo al pasar el mouse por encima.*/
 }
 
 .logo-section img:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /*aumenta el tamaño del logo al pasar el mouse por encima.*/
 }
 
+/*estilos para los botones del menú*/
 .menu-buttons ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-    width: 100%;
+    list-style: none; /*elimina los puntos de la lista*/
+    padding: 0; /*elimina el relleno de la lista*/
+    margin-top: 20px; /*margen superior de 20px*/
+    width: 100%; /*establece el ancho de los botones del menú.*/
 }
 
 .menu-buttons li {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /*margen inferior de 10px entre los botones del menú*/
 }
 
 .menu-buttons a {
-    display: block;
-    padding: 12px;
-    background: #ffffff90;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: 600;
-    color: #333333;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.3s ease; 
+    display: block; /*hace que los enlaces se comporten como bloques*/
+    padding: 12px; /*agrega un poco de espacio alrededor del texto de los botones del menú*/
+    background: #ffffff90; /*cambia el fondo de los botones del menú a blanco con opacidad*/
+    border-radius: 5px; /*redondea los bordes de los botones del menú*/
+    text-align: center; /*centra el texto dentro de los botones del menú*/
+    font-weight: 600; /*cambia el peso de la fuente de los botones del menú*/
+    color: #333333; /*cambia el color del texto de los botones del menú*/
+    cursor: pointer; /*cambia el cursor al pasar el mouse por encima.*/
+    text-decoration: none; /*elimina el subrayado del texto*/
+    transition: background 0.3s ease; /*anima el fondo de los botones del menú al pasar el mouse por encima.*/
 }
 
 .menu-buttons a:hover,
 .menu-buttons a.active {
-    background: #d14662;
-    color: white;
+    background: #d14662; /*cambia el fondo de los botones del menú al pasar el mouse por encima o si está activo*/
+    color: white; /*cambia el color del texto de los botones del menú al pasar el mouse por encima o si está activo*/
 }
 
 
 .menu ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-    width: 100%;
+    list-style: none; /*elimina los puntos de la lista*/
+    padding: 0; /*elimina el relleno de la lista*/
+    margin-top: 20px; /*margen superior de 20px*/
+    width: 100%; /*establece el ancho de los botones del menú.*/
 }
 
 .menu-buttons li {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /*margen inferior de 10px entre los botones del menú*/
 }
 
 .menu-buttons {
-    display: block;
-    padding: 12px 20px;
-    margin-bottom: 10px;
-    color: #d14662;
-    background-color: transparent;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
+    display: block; /*hace que los enlaces se comporten como bloques*/
+    padding: 12px 20px; /*agrega un poco de espacio alrededor del texto de los botones del menú*/
+    margin-bottom: 10px; /*margen inferior de 10px entre los botones del menú*/
+    color: #d14662; /*cambia el color del texto de los botones del menú*/
+    background-color: transparent; /*cambia el fondo de los botones del menú a transparente*/
+    text-decoration: none; /*elimina el subrayado del texto*/
+    border-radius: 8px; /*redondea los bordes de los botones del menú*/
+    transition: background-color 0.3s ease, color 0.3s ease; /*anima el fondo de los botones del menú al pasar el mouse por encima.*/
+    font-family: Arial, sans-serif; /*cambia la fuente de los botones del menú*/
+    font-size: 16px; /*cambia el tamaño de la fuente de los botones del menú*/
 }
 
 .menu-buttons:hover{
     .menu-buttons:hover {
-        background-color: #d14662;
-        color: #ffffff;
+        background-color: #d14662; /*cambia el fondo de los botones del menú al pasar el mouse por encima.*/
+        color: #ffffff; /*cambia el color del texto de los botones del menú al pasar el mouse por encima.*/
     }
 }
 
 .menu-buttons.active,
-.menu-buttons[aria-current="page"] {
-    background-color: #d14662;
-    color: white;
-    font-weight: bold;
+.menu-buttons[aria-current="page"] { /*si el botón es la página actual*/
+    background-color: #d14662; /*cambia el fondo de los botones del menú si está activo o es la página actual*/
+    color: white; /*cambia el color del texto de los botones del menú si está activo o es la página actual*/
+    font-weight: bold; /*cambia el peso de la fuente de los botones del menú si está activo o es la página actual*/
 }
 
 .content {
-    width: 65%;
-    background: #e6dbdb;
-    padding: 40px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 65%; /*establece el ancho del recuadro de contenido*/
+    background: #e6dbdb; /*establece el fondo del recuadro de contenido*/
+    padding: 40px; /* agrega un poco de espacio alrededor del contenido */
+    overflow-y: auto; /* permite el desplazamiento vertical si el contenido es demasiado grande */
+    display: flex; /* hace que el contenido se muestre en la parte superior y inferior */
+    flex-direction: column; /* hace que el contenido se muestre en columnas */
+    justify-content: center; /*centra el contenido horizontalmente*/
     align-items: center; /* centra horizontalmente */
     text-align: center; /* centra el texto */
 }
 
 .title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    margin-top: 39px;
-    color: #333333;
+    font-size: 24px; /* establece el tamaño de la fuente del título */
+    font-weight: 600; /* establece el peso de la fuente del título */
+    margin-bottom: 20px; /* establece el espacio entre el título y el siguiente elemento */
+    margin-top: 39px; /* establece el espacio entre el título y el siguiente elemento */
+    color: #333333; /* cambia el color del título */
 }
 
 button {
-    background: #d14662;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    margin: 5px;
-    transition: background 0.3s ease, transform 0.3s ease;
+    background: #d14662; /* cambia el fondo de los botones a un color rosa */
+    color: white; /* cambia el color del texto de los botones a blanco */
+    padding: 12px 20px; /* agrega un poco de espacio alrededor del texto de los botones */
+    border: none; /* elimina el borde de los botones */
+    border-radius: 5px; /* redondea los bordes de los botones */
+    font-size: 14px; /* cambia el tamaño de la fuente de los botones */
+    cursor: pointer; /* cambia el cursor al pasar el mouse por encima */
+    margin: 5px; /* agrega un margen de 5px entre los botones */
+    transition: background 0.3s ease, transform 0.3s ease; /* anima el fondo de los botones al pasar el mouse por encima */
 }
 
 button:hover {
-    background: #a00e41;
-    transform: translateY(-2px);
+    background: #a00e41; /* cambia el fondo de los botones al pasar el mouse por encima */
+    transform: translateY(-2px); /* desplaza el botón hacia abajo */
 }
 
 .table-container {
-    width: 100%;
-    overflow-x: auto;
-    margin-top: 20px;
+    width: 100%; /* establece el ancho del contenedor de tablas */
+    overflow-x: auto; /* permite el desplazamiento horizontal si el contenido es demasiado grande */
+    margin-top: 20px; /* establece el espacio entre el contenedor de tablas y el siguiente elemento */
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    text-align: center;
+    width: 100%; /* establece el ancho de la tabla */
+    border-collapse: collapse; /* elimina las líneas de la tabla */
+    font-size: 14px; /* establece el tamaño de la fuente de la tabla */
+    text-align: center; /* centra el texto de la tabla */
 }
 
 thead {
-    background-color: #d14662;
-    color: white;
+    background-color: #d14662; /* establece el fondo de las filas de la tabla */
+    color: white; /* cambia el color del texto de las filas de la tabla */
 }
 
+/* Estilos para las celdas de la tabla */
 th, td {
-    padding: 12px;
+    padding: 12px; /* agrega un poco de espacio alrededor del texto de las celdas */
     border-bottom: 2px solid #f4b6c2; /* línea rosa entre filas */
 }
 
+/* Estilos para las imágenes de las celdas de la tabla */
 table td img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 5px;
+    width: 50px; /* establece el ancho de las imágenes en las celdas de la tabla */
+    height: 50px; /* establece el alto de las imágenes en las celdas de la tabla */
+    object-fit: cover; /* ajusta la imagen a la celda según su aspecto */
+    border-radius: 5px; /* redondea los bordes de las imágenes en las celdas de la tabla */
 }
 
 tbody tr:hover {
-    background-color: #fce4ec;
+    background-color: #fce4ec; /* cambia el fondo de las filas de la tabla al pasar el mouse por encima */
 }
 
+/* Estilos para el enlace de cerrar sesión */
 .logout {
-    text-align: center;
-    font-size: 12px;
-    color: #333333;
-    text-decoration: none;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: color 0.3s ease;
+    text-align: center; /* alinea el texto del enlace de cerrar sesión al centro */
+    font-size: 12px; /* establece el tamaño de la fuente del enlace de cerrar sesión */
+    color: #333333; /* cambia el color del texto del enlace de cerrar sesión */
+    text-decoration: none; /* elimina el subrayado del texto */
+    margin-top: 20px; /* establece el espacio entre el enlace de cerrar sesión y el siguiente elemento */
+    cursor: pointer; /* cambia el cursor al pasar el mouse por encima */
+    transition: color 0.3s ease; /* anima el texto al pasar el mouse por encima */
 }
 
+/* Estilos para el enlace de cerrar sesión */
 .logout:hover {
-    color: #a00e41;
-    text-decoration: underline;
+    color: #a00e41; /* cambia el color del texto del enlace de cerrar sesión al pasar el mouse por encima */
+    text-decoration: underline; /* establece el subrayado del texto al pasar el mouse por encima */
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 10px; /* establece el ancho del scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-    background: #e6dbdb;
-    border-radius: 5px;
+    background: #e6dbdb; /* establece el fondo del scrollbar */
+    border-radius: 5px; /* redondea los bordes del scrollbar */
 }
 
+/* Estilos para el scrollbar */
 ::-webkit-scrollbar-thumb {
-    background-color: #d14662;
-    border-radius: 5px;
-    border: 2px solid #e6dbdb; 
+    background-color: #d14662; /* establece el fondo del scrollbar */
+    border-radius: 5px; /* redondea los bordes del scrollbar */
+    border: 2px solid #e6dbdb;  /* establece el borde del scrollbar */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #a00e41; 
-}
-/* Estilos del modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.8);
+    background-color: #a00e41; /* cambia el color del scrollbar al pasar el mouse por encima */
+    /* Cambia el color del scrollbar al pasar el mouse por encima */
+    .modal {
+        display: none; /* oculta el modal */
+        position: fixed; /* establece la posición del modal */
+        z-index: 1000; /* establece el índice z del modal para que esté por encima de otros elementos */
+        padding-top: 60px; /* establece el espacio entre el contenido y el borde del modal */
+        left: 0; /* establece la posición del modal */
+        top: 0; /* establece la posición del modal */
+        width: 100%; /* establece el ancho y el alto del modal */
+        height: 100%; /* establece el alto y el ancho del modal */
+        overflow: auto; /* permite el desplazamiento vertical del contenido si es demasiado grande */
+        background-color: rgba(0,0,0,0.8); /* establece el fondo del modal */
+    }
 }
 
-.modal-content {
-    margin: auto;
-    display: block;
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #fff;
-    animation: zoom 0.3s ease-in-out;
+
+.modal-content { /* Estilos para el contenido del modal */
+    margin: auto; /* centra el contenido del modal */
+    display: block; /* hace que el contenido del modal se muestre en la parte superior y inferior */
+    max-width: 80%; /* establece el ancho y el alto máximo del contenido del modal */
+    max-height: 80%; /* establece el ancho y el alto máximo del contenido del modal */
+    border-radius: 10px; /* redondea los bordes del modal */
+    box-shadow: 0 0 10px #fff;  /* establece un efecto de sombra al hacer clic en el modal */
+    animation: zoom 0.3s ease-in-out; /* anima la página en un instante */
 }
 
 @keyframes zoom {
-    from {transform: scale(0.5);}
-    to {transform: scale(1);}
+    from {transform: scale(0.5);} /* cuando la animación comienza, establece el estado inicial */
+    to {transform: scale(1);} /* cuando la animación termina, establece el estado final */
 }
 
+/* Estilos para el botón cerrar */
 .close {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
+    position: absolute; /* establece la posición del botón cerrar */
+    top: 20px; /* establece la posición del botón cerrar */
+    right: 35px; /* establece la posición del botón cerrar */
+    color: #fff; /* cambia el color del botón cerrar a blanco */
+    font-size: 40px; /* establece el tamaño de la fuente del botón cerrar */
+    font-weight: bold; /* establece el peso de la fuente del botón cerrar */
+    cursor: pointer; /* cambia el cursor al pasar el mouse por encima */
 }
 
+/* Estilos para el botón cerrar */
 .close:hover {
-    color: #f4b6c2;
+    color: #f4b6c2; /* cambia el color del botón cerrar al pasar el mouse por encima */
 }

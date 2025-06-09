@@ -1,220 +1,239 @@
+/*Sirve para importar la fuente “Poppins” desde Google Fonts al css*/
+/*basicamente sirve para hacer que todos los textos usen la fuente Poppins*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+/*esto * es un selector de css que selecciona todos los elementos del documento*/
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    margin: 0; /*elimina el margen exterior de todos los elementos es como un lienzo limpio para dieseñar 
+                    sin las margenes del navegador.*/
+    padding: 0; /*elimina el "relleno" interior de todos los elementos.*/
+    box-sizing: border-box; /*hace que el tamaño de los elementos se ajuste al contenedor.*/
+    font-family: 'Poppins', sans-serif; /*cambia el tipo de letra de los elementos a Poppins*/
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #8e949c;
-    animation: fadeIn 1s ease-in;
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    justify-content: center; /*centra el contenido horizontalmente.*/
+    align-items: center; /*centra el contenido verticalmente.*/
+    height: 100vh; /*establece el alto y el ancho de la página.*/
+    background-color: #8e949c; /*cambia el fondo de la página.*/
+    animation: fadeIn 1s ease-in; /*anima la página en un instante.*/
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.98);
+@keyframes fadeIn { /*anima la página en un instante.*/
+    from { /*cuando la animación comienza, establece el estado inicial.*/
+        opacity: 0; /*establece la opacidad a 0.*/
+        transform: scale(0.98); /*establece el tamaño a 0.98.*/
+    } /*cuando la animación termina, establece el estado final.*/
+    to { 
+        opacity: 1; /*establece la opacidad a 1.*/
+        transform: scale(1); /*establece el tamaño a 1.*/
+    } 
+}
+
+/*estilos para el contenedor principal*/
+.container { /*establece el tamaño y el fondo de la página.*/
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    width: 1000px; /*establece el ancho de la página.*/
+    height: 600px; /*establece el alto de la página.*/
+    background: #ffffff; /*establece el fondo de la página.*/
+    border-radius: 10px; /*establece el borde de la página.*/
+    overflow: hidden; /*oculta el contenido que no cabe dentro de la página.*/
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /*establece un efecto de sombra.*/
+    animation: slideUp 0.8s ease; /*anima la página en un instante.*/
+} 
+
+/*anima la página*/
+@keyframes slideUp { 
+    from { 
+        transform: translateY(30px); /*establece el tamaño a 30px.*/
+        opacity: 0; /*establece la opacidad a 0.*/
     }
     to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.container {
-    display: flex;
-    width: 1000px;
-    height: 600px;
-    background: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    animation: slideUp 0.8s ease;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0); 
-        opacity: 1;
+        transform: translateY(0); /*establece el tamaño a 0.*/
+        opacity: 1; /*establece la opacidad a 1.*/
     }
 }
 
 
 /* Sidebar */
-
 .sidebar {
-    width: 35%;
-    background: #f4b6c2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    transition: background 0.4s ease;
+    width: 35%; /*establece el ancho del recuadro lateral.*/
+    background: #f4b6c2; /*establece el fondo del recuadro lateral.*/
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    flex-direction: column; /*hace que el contenido se muestre en columnas.*/
+    align-items: center; /*centra el contenido verticalmente.*/
+    padding: 20px; /*establece el espacio entre el contenido y el borde del recuadro.*/
+    transition: background 0.4s ease; /*anima la página en un instante.*/
 }
 
 .sidebar:hover {
-    background: #f292b4;
+    background: #f292b4; /*cambia el fondo del recuadro lateral al pasar el mouse por encima.*/
 }
 
 .logo {
-    width: 80%;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    transition: transform 0.3s ease;
+    width: 80%; /*establece el ancho del logo.*/
+    border-radius: 10px; /*establece el borde del logo.*/
+    margin-bottom: 30px; /*establece el espacio entre el logo y los botones del menú.*/
+    transition: transform 0.3s ease; /*anima el logo al pasar el mouse por encima.*/
 }
 
 .logo:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /*aumenta el tamaño del logo al pasar el mouse por encima.*/
 }
 
+/*estilos para los botones del menú*/
 .menu-buttons {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+    width: 100%; /*establece el ancho de los botones del menú.*/
+    display: flex; /*hace que los botones del menú se muestren en la parte superior y inferior.*/
+    flex-direction: column; /*hace que los botones del menú se muestren en filas.*/
+    gap: 10px; /*establece el espacio entre los botones del menú.*/
+} 
 
+/*estilos para los botones del menú*/
 .menu-buttons button {
-    width: 100%;
-    padding: 12px;
-    background: #ffffff90;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: 600;
-    color: #333333;
-    cursor: pointer;
-    border: none;
-    transition: background 0.3s ease, color 0.3s ease;
+    width: 100%; /*establece el ancho de los botones del menú.*/
+    padding: 12px; /*establece el espacio entre el contenido y el borde del botón.*/
+    background: #ffffff90; /*cambia el fondo de los botones del menú a blanco con opacidad.*/
+    border-radius: 5px; /*establece el borde de los botones del menú.*/
+    text-align: center; /*alinea el texto a la izquierda.*/
+    font-weight: 600; /*cambia el peso de la fuente del botón.*/
+    color: #333333; /*cambia el color del texto del botón.*/
+    cursor: pointer; /*cambia el cursor al pasar el mouse por encima del botón.*/
+    border: none; /*elimina el borde del botón.*/
+    transition: background 0.3s ease, color 0.3s ease; /*anima la página en un instante.*/
 }
 
-.menu-buttons button:hover,
+.menu-buttons button:hover, /*cuando el mouse pasa por encima de un botón del menú, cambia el color del botón.*/
 .menu-buttons button.active {
-    background: #d14662;
-    color: white;
+    background: #d14662; /*cambia el fondo del botón al pasar el mouse por encima.*/
+    color: white; /*cambia el color del texto del botón al pasar el mouse por encima.*/
 }
 
 
 /* Content */
-
+/*estilos para el contenido principal*/
 .content {
-    width: 65%;
-    background: #e6dbdb;
-    padding: 40px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  text-align: center;
+    width: 65%; /*establece el ancho del contenido principal.*/
+    background: #e6dbdb; /*establece el fondo del contenido principal.*/
+    padding: 40px; /*establece el espacio entre el contenido y el borde del contenido.*/
+    overflow-y: auto; /*permite el desplazamiento vertical del contenido si es necesario.*/
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    flex-direction: column; /*hace que el contenido se muestre en columnas.*/
+    justify-content: center; /*centra el contenido horizontalmente.*/
+    align-items: center; /*centra el contenido verticalmente.*/
+    text-align: center; /*alinea el texto a la izquierda.*/
 }
 
+/*estilos para el título*/
 .title {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #333333;
+    font-size: 24px; /*establece el tamaño de la fuente del título.*/
+    font-weight: 700; /*establece el peso de la fuente del título.*/
+    margin-bottom: 20px; /*establece el espacio entre el título y el siguiente elemento.*/
+    color: #333333; /*cambia el color del título.*/
 }
 
 form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    display: grid; /*hace que los elementos se muestren en una fila.*/
+    grid-template-columns: repeat(2, 1fr); /*establece el número de columnas y el ancho de cada una.*/
+    gap: 20px; /*establece el espacio entre los elementos.*/
 }
 
+/*estilos para los grupos de formularios*/
 .form-group {
-    display: flex;
-    flex-direction: column;
+    display: flex; /*hace que los elementos se muestren en la parte superior y inferior.*/
+    flex-direction: column; /*hace que los elementos se muestren en filas.*/
 }
 
+/*estilos para el grupo de formularios de ancho completo*/
 .full-width {
-    grid-column: span 2;
+    grid-column: span 2; /*establece el ancho del grupo de formularios.*/
 }
 
+/*estilos para la etiqueta*/
 label {
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333333;
+    font-size: 12px; /*establece el tamaño de la fuente de las etiquetas.*/
+    font-weight: bold; /*establece el peso de la fuente de las etiquetas.*/
+    margin-bottom: 5px; /*establece el espacio entre las etiquetas y el siguiente elemento.*/
+    color: #333333; /*cambia el color de las etiquetas (usuario, contraseña, etc.).*/
 }
 
+/*estilos para los campos de entrada*/
 input,
 select {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background: #cfcfcf;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #333333;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    padding: 10px; /*establece el espacio entre el borde del recuadro y el contenido del recuadro.*/
+    border: none; /*elimina el borde del recuadro.*/
+    border-radius: 5px; /*establece el borde del recuadro.*/
+    background: #cfcfcf; /*establece el fondo del recuadro.*/
+    margin-bottom: 5px; /*establece el espacio entre el recuadro y el siguiente elemento.*/
+    font-size: 14px; /*establece el tamaño de la fuente del recuadro.*/
+    color: #333333; /*cambia el color del recuadro.*/
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /*anima la página en un instante.*/
 }
 
+/*estilos para los campos de entrada*/
 input:focus,
 select:focus {
-    outline: none;
-    box-shadow: 0 0 5px #af223e;
-    transform: scale(1.02);
+    outline: none; /*elimina el borde del recuadro al hacer clic en él.*/
+    box-shadow: 0 0 5px #af223e; /*establece un efecto de sombra al hacer clic en el recuadro.*/
+    transform: scale(1.02); /*aumenta el tamaño del recuadro al hacer clic en él.*/
 }
 
+/*estilos para el botón de envío*/
 button {
-    background: #d14662;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s ease, transform 0.3s ease;
+    background: #d14662; /*establece el fondo del botón de envío.*/
+    color: white; /*cambia el color del texto del botón de envío.*/
+    padding: 12px; /*establece el espacio entre el contenido y el borde del botón de envío.*/
+    border: none; /*elimina el borde del botón de envío.*/
+    border-radius: 5px; /*establece el borde del botón de envío.*/
+    font-size: 14px; /*establece el tamaño de la fuente del botón de envío.*/
+    cursor: pointer; /*cambia el cursor al pasar el mouse por encima del botón.*/
+    margin-top: 10px; /*establece el espacio entre el botón y el siguiente elemento.*/
+    transition: background 0.3s ease, transform 0.3s ease; /*anima la página en un instante.*/
 }
 
+/*estilos para el botón de envío*/
 button:hover {
-    background: #a00e41;
-    transform: translateY(-2px);
+    background: #a00e41; /*cambia el fondo del botón de envío al pasar el mouse por encima.*/
+    transform: translateY(-2px); /*desplaza el botón hacia abajo.*/
 }
 
+/*estilos para el mensaje de éxito*/
 .logout {
-    text-align: center;
-    font-size: 12px;
-    color: #333;
-    text-decoration: none;
-    margin-top: 30px;
-    cursor: pointer;
-    transition: color 0.3s ease;
+    text-align: center; /*alinea el texto a la izquierda.*/
+    font-size: 12px; /*establece el tamaño de la fuente del texto.*/
+    color: #333; /*cambia el color del texto.*/
+    text-decoration: none; /*elimina el subrayado del texto.*/
+    margin-top: 30px; /*establece el espacio entre el texto y el siguiente elemento.*/
+    cursor: pointer; /*cambia el cursor al pasar el mouse por encima del botón.*/
+    transition: color 0.3s ease; /*anima la página en un instante.*/
 }
 
+/*estilos para el mensaje de éxito*/
 .logout:hover {
-    color: #a00e41;
-    text-decoration: underline;
+    color: #a00e41; /*cambia el color del texto al pasar el mouse por encima.*/
+    text-decoration: underline; /*establece el subrayado del texto al pasar el mouse por encima.*/
 }
 
 
 /* Scrollbar */
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 10px; /*establece el ancho del scrollbar.*/
 }
 
 ::-webkit-scrollbar-track {
-    background: #e6dbdb;
-    border-radius: 5px;
+    background: #e6dbdb; /*establece el fondo del scrollbar.*/
+    border-radius: 5px; /*establece el borde del scrollbar.*/
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #d14662;
-    border-radius: 5px;
-    border: 2px solid #e6dbdb;
+    background-color: #d14662; /*cambia el color del scrollbar.*/
+    border-radius: 5px; /*establece el borde del scrollbar.*/
+    border: 2px solid #e6dbdb; /*establece el borde del scrollbar.*/
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #a00e41;
+    background-color: #a00e41; /*cambia el color del scrollbar al pasar el mouse por encima.*/
 }

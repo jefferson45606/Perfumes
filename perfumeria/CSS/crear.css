@@ -1,381 +1,424 @@
+/*Sirve para importar la fuente “Poppins” desde Google Fonts al css*/
+/*basicamente sirve para hacer que todos los textos usen la fuente Poppins*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+/*esto * es un selector de css que selecciona todos los elementos del documento*/
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    scrollbar-width: thin;
-    scrollbar-color: #e6486f #fce4ec;
+    margin: 0; /*elimina el margen exterior de todos los elementos es como un lienzo limpio para dieseñar 
+                    sin las margenes del navegador.*/
+    padding: 0; /*elimina el "relleno" interior de todos los elementos.*/
+    box-sizing: border-box; /*hace que el tamaño de los elementos se ajuste al contenedor.*/
+    font-family: 'Poppins', sans-serif; /*cambia el tipo de letra de los elementos a Poppins*/
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #8e949c;
-    animation: fadeIn 1s ease-in;
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    justify-content: center; /*centra el contenido horizontalmente.*/
+    align-items: center; /*centra el contenido verticalmente.*/
+    height: 100vh; /*establece el alto y el ancho de la página.*/
+    background-color: #8e949c; /*cambia el fondo de la página.*/
+    animation: fadeIn 1s ease-in; /*anima la página en un instante.*/
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.98);
+@keyframes fadeIn { /*anima la página en un instante.*/
+    from { /*cuando la animación comienza, establece el estado inicial.*/
+        opacity: 0; /*establece la opacidad a 0.*/
+        transform: scale(0.98); /*establece el tamaño a 0.98.*/
+    } /*cuando la animación termina, establece el estado final.*/
+    to { 
+        opacity: 1; /*establece la opacidad a 1.*/
+        transform: scale(1); /*establece el tamaño a 1.*/
+    } 
+}
+
+/*estilos para el contenedor principal*/
+.container { /*establece el tamaño y el fondo de la página.*/
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    width: 1000px; /*establece el ancho de la página.*/
+    height: 600px; /*establece el alto de la página.*/
+    background: #ffffff; /*establece el fondo de la página.*/
+    border-radius: 10px; /*establece el borde de la página.*/
+    overflow: hidden; /*oculta el contenido que no cabe dentro de la página.*/
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /*establece un efecto de sombra.*/
+    animation: slideUp 0.8s ease; /*anima la página en un instante.*/
+} 
+
+/*anima la página*/
+@keyframes slideUp { 
+    from { 
+        transform: translateY(30px); /*establece el tamaño a 30px.*/
+        opacity: 0; /*establece la opacidad a 0.*/
     }
     to {
-        opacity: 1;
-        transform: scale(1);
+        transform: translateY(0); /*establece el tamaño a 0.*/
+        opacity: 1; /*establece la opacidad a 1.*/
     }
 }
 
-.container {
-    display: flex;
-    width: 1000px;
-    height: 600px;
-    background: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    animation: slideUp 0.8s ease;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
+/*estilos para el logo*/
 .logo-section {
-    width: 35%;
-    background: #f4b6c2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-    transition: background 0.4s ease;
+    width: 35%; /*establece el ancho del recuadro del logo.*/
+    background: #f4b6c2; /*establece el fondo del recuadro del logo.*/
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    flex-direction: column; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    justify-content: center; /*centra el contenido verticalmente.*/
+    padding: 20px; /*espacio interno del recuadro del logo*/
+    transition: background 0.4s ease; /*anima el fondo del recuadro del logo al pasar el mouse por encima*/
 }
 
 .logo-section:hover {
-    background: #f292b4;
+    background: #f292b4; /*cambia el fondo del recuadro del logo al pasar el mouse por encima.*/
 }
 
 .logo-section img {
-    width: 75%;
-    transition: transform 0.3s ease;
+    width: 75%; /*establece el ancho del logo.*/
+    transition: transform 0.3s ease; /*anima la imagen del logo al pasar el mouse por encima.*/
 }
 
 .logo-section img:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /*aumenta el tamaño del logo al pasar el mouse por encima.*/
 }
 
 .menu-buttons ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-    width: 100%;
+    list-style: none; /*elimina los puntos de la lista*/
+    padding: 0; /*elimina el relleno de la lista*/
+    margin-top: 20px; /*margen superior de 20px*/
+    width: 100%; /*establece el ancho de los botones del menú.*/
 }
 
+/*estilos para los botones del menú*/
 .menu-buttons li {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /*margen inferior de 10px entre los botones del menú*/
 }
 
+/*estilos para los botones del menú*/
 .menu-buttons a {
-    display: block;
-    padding: 12px;
-    background: #ffffff90;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: 600;
-    color: #333333;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.3s ease;
+    display: block; /*hace que el enlace ocupe todo el ancho del botón*/
+    padding: 12px; /*agrega un poco de espacio alrededor del texto del botón*/
+    background: #ffffff90; /*cambia el fondo de los botones del menú a blanco con opacidad*/
+    border-radius: 5px; /*redondea las esquinas de los botones del menú*/
+    text-align: center; /*centra el texto del botón*/
+    font-weight: 600; /*cambia el peso de la fuente del texto de los botones del menú*/
+    color: #333333; /*cambia el color del texto de los botones del menú*/
+    cursor: pointer; /*cambia el cursor a una mano al pasar sobre el botón*/
+    text-decoration: none; /*elimina el subrayado del enlace*/
+    transition: background 0.3s ease; /*anima el fondo de los botones del menú al pasar el mouse por encima*/
 }
 
+/*estilos para los botones del menú*/
 .menu-buttons a:hover,
-.menu-buttons a.active {
-    background: #d14662;
-    color: white;
+.menu-buttons a.active { 
+    background: #d14662; /*cambia el fondo de los botones del menú al pasar el mouse por encima o si está activo*/
+    color: white; /*cambia el color del texto de los botones del menú al pasar el mouse por encima o si está activo*/
 }
 
+/*estilos para el contenedor principal*/
 .login-section {
-    width: 65%;
-    background: #e6dbdb;
-    padding: 40px 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow-y: auto;
+    width: 65%; /*establece el ancho del recuadro de login.*/
+    background: #e6dbdb; /*establece el fondo del recuadro de login.*/
+    padding: 40px 30px; /*establece el espacio entre el contenido y el borde del recuadro.*/
+    display: flex; /*hace que el contenido se muestre en la parte superior y inferior.*/
+    flex-direction: column; /*hace que el contenido se muestre en columnas*/
+    justify-content: flex-start; /*centra el contenido horizontalmente*/
+    overflow-y: auto; /*permite el desplazamiento vertical si el contenido es demasiado grande*/
 }
 
 .title {
-    font-size: 26px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #333;
+    font-size: 26px; /*establece el tamaño de la fuente del título.*/
+    font-weight: 600; /*establece el peso de la fuente del título.*/
+    margin-bottom: 10px; /*establece el espacio entre el título y el siguiente elemento.*/
+    color: #333; /*cambia el color del texto del título.*/
 }
 
+/*estilos para el título*/
 .subtitle {
-    font-size: 14px;
-    color: #444;
-    margin-bottom: 25px;
+    font-size: 14px; /*establece el tamaño de la fuente del subtítulo.*/
+    color: #444; /*cambia el color del texto del subtítulo.*/   
+    margin-bottom: 25px; /*establece el espacio entre el subtítulo y el siguiente elemento.*/
 }
 
+/*estilos para las etiquetas*/
 label {
-    font-size: 13px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 8px;
-    display: block;
+    font-size: 13px; /*establece el tamaño de la fuente de las etiquetas.*/
+    font-weight: bold; /*establece el peso de la fuente de las etiquetas.*/
+    color: #333; /*cambia el color de las etiquetas (usuario, contraseña, etc.).*/
+    margin-bottom: 8px; /*establece el espacio entre las etiquetas y el siguiente elemento.*/
+    display: block; /*hace que los elementos se muestren en una línea.*/
 }
 
+/*estilos para los campos de entrada*/
 input,
 select {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background: #cfcfcf;
-    margin-bottom: 15px;
-    font-size: 14px;
-    color: #333;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
+    padding: 10px; /*establece el espacio entre el borde del recuadro y el contenido del recuadro.*/
+    border: none; /*elimina el borde del recuadro.*/
+    border-radius: 5px; /*establece el borde del recuadro.*/
+    background: #cfcfcf; /*establece el fondo del recuadro.*/
+    margin-bottom: 15px; /*establece el espacio entre el recuadro y el siguiente elemento.*/
+    font-size: 14px; /*establece el tamaño de la fuente de los campos de entrada.*/
+    color: #333; /*cambia el color del recuadro.*/
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /*anima la página en un instante.*/
+} 
 
 input:focus,
 select:focus {
-    outline: none;
-    box-shadow: 0 0 5px #af223e;
-    transform: scale(1.02);
+    outline: none; /*elimina el borde del recuadro al hacer clic en él.*/
+    box-shadow: 0 0 5px #af223e; /*establece un efecto de sombra al hacer clic en el recuadro.*/
+    transform: scale(1.02); /*aumenta el tamaño del recuadro al hacer clic en él.*/
 }
 
+/*estilos para los botones*/
 .categorias-section {
-    margin-bottom: 20px;
+    margin-bottom: 20px; /*establece el espacio entre los botones y el siguiente elemento.*/
 }
 
+
+/*estilos para los botones*/
 .botones-categorias button,
 .boton-categoria {
-    margin: 5px 5px 10px 0;
-    background: #d14662;
+    margin: 5px 5px 10px 0; /*establece el espacio entre los botones y el siguiente elemento.*/
+    background: #d14662; /*establece el fondo de los botones.*/
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+    padding: 10px 15px; /*establece el espacio entre el borde del botón y el contenido del botón.*/
+    border-radius: 6px; /*redondea las esquinas de los botones.*/
+    font-size: 13px; /*establece el tamaño de la fuente de los botones.*/
+    font-weight: 500; /*establece el peso de la fuente de los botones.*/
+    cursor: pointer; /*cambia el cursor al pasar el mouse por encima*/
+    transition: background 0.3s ease, transform 0.3s ease; /*anima la página en un instante.*/
 }
 
+
+/*estilos para los botones*/
 .botones-categorias button:hover,
 .boton-categoria:hover {
-    background: #a00e41;
-    transform: translateY(-2px);
+    background: #a00e41; /*cambia el fondo de los botones al pasar el mouse por encima.*/
+    transform: translateY(-2px); /*desplaza el botón hacia abajo.*/
 }
 
+/*estilos para los botones*/
 .boton-categoria.activo {
-    background-color: #fff;
-    color: #e6486f;
-    border: 2px solid #e6486f;
+    background-color: #fff; /*cambia el fondo de los botones al pasar el mouse por encima.*/
+    color: #e6486f; /*cambia el color del texto de los botones al pasar el mouse por encima.*/
+    border: 2px solid #e6486f; /*agrega un borde al botón activo*/
 }
 
+/*estilos para el botón de crear categoría*/
 .crear-categoria {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
+    display: flex; /*hace que el contenido se muestre en una línea.*/
+    gap: 10px; /*establece el espacio entre los elementos.*/
+    margin-top: 10px; /*establece el espacio entre el contenido y el siguiente elemento.*/
 }
 
 .crear-categoria input {
-    flex: 1;
+    flex: 1; /*hace que el elemento se expanda.*/
 }
 
 .crear-categoria button {
-    padding: 10px 15px;
-    background: #d14662;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+    padding: 10px 15px; /*establece el espacio entre el borde del botón y el contenido del botón.*/
+    background: #d14662; /*establece el fondo del botón.*/
+    color: white; /*cambia el color del texto del botón.*/
+    border: none; /*elimina el borde del botón.*/
+    border-radius: 5px; /*redondea las esquinas del botón.*/
+    font-size: 13px; /*establece el tamaño de la fuente del botón.*/
+    cursor: pointer; /*cambia el cursor al pasar el mouse por encima*/
+    transition: background 0.3s ease, transform 0.3s ease; /*anima la página en un instante.*/
 }
+
 
 .crear-categoria button:hover {
-    background: #a00e41;
-    transform: translateY(-2px);
+    background: #a00e41; /*cambia el fondo del botón al pasar el mouse por encima.*/
+    transform: translateY(-2px); /*desplaza el botón hacia abajo.*/
 }
 
+/*estilos para el enlace de cerrar sesión*/
 .logout {
-    text-align: center;
-    font-size: 12px;
-    color: #333;
-    text-decoration: none;
-    margin-top: 30px;
-    cursor: pointer;
-    transition: color 0.3s ease;
+    text-align: center; /*alinea el texto del enlace de cerrar sesión al centro.*/
+    font-size: 12px; /*establece el tamaño de la fuente del enlace de cerrar sesión.*/
+    color: #333; /*cambia el color del texto del enlace de cerrar sesión.*/
+    text-decoration: none;  /*elimina el subrayado del enlace de cerrar sesión.*/
+    margin-top: 30px; /*establece el espacio entre el texto y el siguiente elemento.*/
+    cursor: pointer; /*cambia el cursor al pasar el mouse por encima.*/
+    transition: color 0.3s ease; /*anima la página en un instante.*/
 }
 
+/*estilos para el enlace de cerrar sesión*/
 .logout:hover {
-    color: #a00e41;
-    text-decoration: underline;
+    color: #a00e41; /*cambia el color del texto al pasar el mouse por encima.*/
+    text-decoration: underline; /*establece el subrayado del texto al pasar el mouse por encima.*/
 }
 
+/* Estilos para el modal de creación de productos */
 #modalProducto {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    align-items: center;
-    justify-content: center;
-    animation: fadeInModal 0.4s ease-in-out;
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fija la posición */
+    z-index: 9999; /* Establece el índice z */
+    top: 0; /* Establece la posición */
+    left: 0; /* Establece la posición */
+    width: 100vw; /* Establece el ancho */
+    height: 100vh; /* Establece el alto y el ancho */
+    background-color: rgba(0, 0, 0, 0.6); /* Establece el fondo */
+    backdrop-filter: blur(4px); /* Agrega un efecto de desenfoque al fondo */
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido */
+    animation: fadeInModal 0.4s ease-in-out; /* Anima la página en un instante */
 }
 
+/* Anima la página */
 @keyframes fadeInModal {
     from {
-        opacity: 0;
-        transform: scale(0.95);
+        opacity: 0; /* Establece la opacidad a 0 */
+        transform: scale(0.95); /* Establece el tamaño a 0.95 */
     }
     to {
-        opacity: 1;
-        transform: scale(1);
+        opacity: 1; /* Establece la opacidad a 1 */
+        transform: scale(1); /* Establece el tamaño a 1 */
     }
 }
 
+/* Estilos para el contenedor del modal */
 #modalContenido {
-    background: #ffffff;
-    padding: 35px 30px;
-    border-radius: 20px;
-    max-height: 90vh;
-    overflow-y: auto;
-    width: 95%;
-    max-width: 600px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    animation: slideUpModal 0.4s ease-out;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #ffffff; /* Establece el fondo */
+    padding: 35px 30px; /* Establece el espacio entre el contenido y el borde */
+    border-radius: 20px; /* Establece el borde del contenedor */
+    max-height: 90vh; /* Establece el alto máximo del contenedor */
+    overflow-y: auto; /* Permite el desplazamiento vertical del contenido si es demasiado grande */
+    width: 95%; /* Establece el ancho del contenedor */
+    max-width: 600px; /* Establece el ancho máximo del contenedor */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* Establece un efecto de sombra */
+    animation: slideUpModal 0.4s ease-out; /* Anima la página en un instante */
+    position: relative; /* Fija la posición */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Anima la página en un instante */
 }
 
+/* Anima la página */
 #modalContenido:hover {
-    transform: scale(1.01);
-    box-shadow: 0 16px 40px rgba(230, 72, 111, 0.4);
+    transform: scale(1.01); /* Aumenta el tamaño del contenedor al pasar el mouse por encima */
+    box-shadow: 0 16px 40px rgba(230, 72, 111, 0.4); /* Establece un efecto de sombra al pasar el mouse por encima */
 }
 
+/* Anima la página */
 @keyframes slideUpModal {
     from {
-        transform: translateY(30px);
-        opacity: 0;
+        transform: translateY(30px); /* Establece el tamaño a 30px */
+        opacity: 0; /* Establece la opacidad a 0 */
     }
     to {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateY(0); /* Establece el tamaño a 0 */
+        opacity: 1; /* Establece la opacidad a 1 */
     }
 }
 
+/* Estilos para el título del modal */
 #modalContenido h2 {
-    text-align: center;
-    color: #d14662; 
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: 600;
+    text-align: center; /* Alinea el texto al centro */
+    color: #d14662;  /* Cambia el color del texto */
+    margin-bottom: 20px; /* Establece el espacio entre el título y el siguiente elemento */
+    font-size: 24px; /* Establece el tamaño de la fuente */
+    font-weight: 600; /* Establece el peso de la fuente */
 }
 
-#modalContenido form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+/* Estilos para el formulario dentro del modal */
+#modalContenido form { 
+    display: flex; /* Hace que el contenido se muestre en la parte superior y inferior */
+    flex-direction: column; /* Hace que el contenido se muestre en columnas */
+    gap: 18px; /* Establece el espacio entre los elementos */
 }
 
+/* Estilos para las etiquetas dentro del formulario */
 #modalContenido form label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #444;
-    display: flex;
-    flex-direction: column;
+    font-size: 14px; /* Establece el tamaño de la fuente de las etiquetas */
+    font-weight: 600; /* Establece el peso de la fuente de las etiquetas */
+    color: #444; /* Cambia el color de las etiquetas (usuario, contraseña, etc.) */
+    display: flex; /* Hace que el contenido se muestre en una línea */
+    flex-direction: column; /* Hace que el contenido se muestre en columnas */
 }
 
+/* Estilos para las etiquetas de imagen dentro del formulario */
 #modalContenido form label.imagen-label {
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 8px;
+    flex-direction: row !important; /* Hace que el contenido se muestre en una línea */
+    align-items: center !important; /* Centra el contenido verticalmente */
+    gap: 8px; /* Establece el espacio entre los elementos */
 }
 
+/* Estilos para los campos de entrada dentro del formulario */
 #modalContenido form input {
-    padding: 12px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    font-size: 14px;
-    background-color: #f7f7f7;
-    color: #333;
-    transition: all 0.3s ease;
-    transform: translateY(0);
+    padding: 12px; /* Establece el espacio entre el borde del recuadro y el contenido del recuadro */
+    border: 2px solid #ccc; /* Establece el borde del recuadro */
+    border-radius: 10px; /* Establece el borde del recuadro */
+    font-size: 14px; /* Establece el tamaño de la fuente del recuadro */
+    background-color: #f7f7f7; /* Establece el fondo del recuadro */
+    color: #333; /* Cambia el color del recuadro */
+    transition: all 0.3s ease; /* Anima la página en un instante */
+    transform: translateY(0); /* Desplaza el recuadro hacia arriba */
 }
 
+/* Estilos para los campos de entrada dentro del formulario */
 #modalContenido form input:hover {
-    border-color: #dd2a68;
+    border-color: #dd2a68; /* Cambia el color del borde al pasar el mouse por encima */
 }
 
+/* Estilos para los campos de entrada dentro del formulario */
 #modalContenido form input:focus {
-    border-color: #e6486f;
-    background-color: #fff;
-    box-shadow: 0 0 8px rgba(230, 72, 111, 0.3);
-    transform: translateY(-2px);
+    border-color: #e6486f; /* Cambia el color del borde al pasar el mouse por encima */
+    background-color: #fff; /* Cambia el fondo del recuadro al pasar el mouse por encima */
+    box-shadow: 0 0 8px rgba(230, 72, 111, 0.3); /* Establece un efecto de sombra al pasar el mouse por encima */
+    transform: translateY(-2px); /* Desplaza el recuadro hacia abajo */
 }
 
+/* Estilos para los campos de entrada de archivo dentro del formulario */
 #modalContenido input[type="file"] {
-    padding: 10px;
-    border: 2px dashed #e6486f;
-    background-color: #fff0f5;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 10px; /* Establece el espacio entre el borde del recuadro y el contenido del recuadro */
+    border: 2px dashed #e6486f; /* Establece el borde del recuadro */
+    background-color: #fff0f5; /* Establece el fondo del recuadro */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse por encima */
+    transition: background-color 0.3s ease; /* Anima la página en un instante */
 }
 
+/* Estilos para los campos de entrada de archivo dentro del formulario */
 #modalContenido input[type="file"]:hover {
-    background-color: #ffe6ef;
+    background-color: #ffe6ef; /* Cambia el fondo del recuadro al pasar el mouse por encima */
 }
 
+/* Estilos para los botones de envío dentro del formulario */
 #modalContenido button[type="submit"] {
-    margin-top: 15px;
-    background: #e6486f;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.3s ease, background 0.3s ease;
+    margin-top: 15px; /* Establece el espacio entre el botón y el siguiente elemento */
+    background: #e6486f; /* Cambia el fondo del botón */
+    color: white; /* Cambia el color del texto del botón */
+    padding: 12px; /* Establece el espacio entre el borde del botón y el contenido del botón */
+    border: none; /* Elimina el borde del botón */
+    border-radius: 12px; /* Establece el borde del botón */
+    font-size: 16px;  /* Establece el tamaño de la fuente */
+    font-weight: bold; /* Establece el peso de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse por encima */
+    transition: transform 0.3s ease, background 0.3s ease; /* Anima la página en un instante */
 }
 
+/* Estilos para los botones de envío dentro del formulario */
 #modalContenido button[type="submit"]:hover {
-    transform: translateY(-3px);
-    background: #c53659;
+    transform: translateY(-3px); /* Desplaza el botón hacia abajo */
+    background: #c53659; /* Cambia el fondo del botón al pasar el mouse por encima */
 }
 
+/* Estilos para el botón de cerrar el modal */
 #cerrarModal,
-#cerrarModalProducto {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 24px;
-    color: #aaa;
-    cursor: pointer;
-    transition: color 0.3s ease;
+#cerrarModalProducto { 
+    position: absolute; /* Fija la posición */
+    top: 20px; /* Establece la posición */
+    right: 25px; /* Establece la posición */
+    font-size: 24px; /* Establece el tamaño de la fuente */
+    color: #aaa; /* Cambia el color del texto */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse por encima */
+    transition: color 0.3s ease; /* Anima la página en un instante */
 }
 
+/* Estilos para el botón de cerrar el modal */
 #cerrarModal:hover,
 #cerrarModalProducto:hover {
-    color: #d14662;
+    color: #d14662; /* Cambia el color del texto al pasar el mouse por encima */
 }
 
-label > input[type="file"], label > span {
-  vertical-align: middle;
+/* Estilos para el botón de cerrar el modal */
+label > input[type="file"], label > span { /* Estilos para el botón de cerrar el modal */
+    vertical-align: middle; /* Alinea verticalmente el contenido */
 }
