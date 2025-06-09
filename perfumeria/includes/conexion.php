@@ -1,5 +1,6 @@
 <?php
-#session_start();
+#session_start(); 
+// en pocas palabras, este script conecta a la base de datos de la perfumería   
 $server="localhost";
 $user="proyecto";
 $pass="FICHA_2826320";

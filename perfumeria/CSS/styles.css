@@ -1,7 +1,11 @@
+/*Sirve para importar la fuente “Poppins” desde Google Fonts al css*/
+/*basicamente sirve para hacer que todos los textos usen la fuente Poppins*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+
+/*esto * es un selector de css que selecciona todos los elementos del documento*/
 * {
-    margin: 0;
+    margin: 1000; /*elimina el margen exterior de todos los elementos.*/
     padding: 0;
     box-sizing: border-box; 
     font-family: 'Poppins', sans-serif;

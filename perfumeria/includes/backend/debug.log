@@ -394,3 +394,73 @@ Array
     [recarga_60ml] => 23900
     [recarga_100ml] => 44600
 )
+Array
+(
+    [Código] => 001
+    [Nombre] => NAUTILUS
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana
+    [Cantidad] => 1
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [ImagenExistente] => uploads/68464397e1143_NAUTICAV-voyage.jpg
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => mk12
+    [Nombre] => CHAMPION AQU
+    [Inspiración] => by Paco Rabanne
+    [Casa] => Invictus Aqua
+    [Descripción] => Una fragancia amaderada hiperfresca para hombres con una intensa armonía marina.
+    [Cantidad] => 5
+    [Precio] => 10000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 1
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => mk12
+    [Nombre] => CHAMPION AQU
+    [Inspiración] => by Paco Rabanne
+    [Casa] => Invictus Aqua
+    [Descripción] => Una fragancia amaderada hiperfresca para hombres con una intensa armonía marina.
+    [Cantidad] => 5
+    [Precio] => 10000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 1
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)

@@ -60,7 +60,7 @@
   </div>
 
   
-
+<!--comienza el script-->
 <script>
 let categorias = [];
 let categoriaSeleccionadaId = null;
@@ -436,7 +436,7 @@ function crearTarjetaProducto(datos, contenedor) {
   const img = document.createElement('img');
   let rutaImagen = datos['Imagen'];
   if (rutaImagen && !rutaImagen.startsWith('http')) {
-    rutaImagen = 'uploads/' + rutaImagen.replace(/^uploads[\/\\]/, '');
+    rutaImagen = 'includes/backend' + rutaImagen;
   }
   img.src = rutaImagen || 'https://via.placeholder.com/100';
   img.style.width = '100%';
@@ -466,7 +466,25 @@ function crearTarjetaProducto(datos, contenedor) {
   eliminarBtn.style.cursor = 'pointer';
   eliminarBtn.onclick = (e) => {
     e.stopPropagation();
-    if (confirm("¿Eliminar este producto?")) card.remove();
+    if (confirm("¿Eliminar este producto?")) {
+      const codigo=datos['Código'] || datos['codigo_producto'];
+      //elimina del servidor y luego de lavista
+      fetch("includes/backend/producto_delete.php",{
+        method:"POST",
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'codigo_producto=' + encodeURIComponent(codigo)
+      })
+      .then(r => r.json())
+      .then(json => {
+        if (json.success){
+          card.remove();
+
+        } else {
+          alert("Error al eliminar el producto: " + (json.message || ''));
+        }
+      })
+      .catch(() => alert('Error de conexión al intentar borrar'));
+    }
   };
 
   card.dataset.producto = JSON.stringify(datos);
