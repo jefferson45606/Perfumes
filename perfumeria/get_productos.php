@@ -12,7 +12,7 @@ $codigo = $_GET['codigo'];
 $stmt = $conn->prepare(
     "SELECT nombre_producto, precio_30ml, precio_60ml, precio_100ml, 
             recarga_30ml, recarga_60ml, recarga_100ml 
-     FROM productos WHERE codigo_producto = ?"
+        FROM productos WHERE codigo_producto = ?"
 );
 $stmt->bind_param('s', $codigo);
 $stmt->execute();

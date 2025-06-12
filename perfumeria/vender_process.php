@@ -24,6 +24,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['items'])) {
     }
     $stmt->close();
 
+    // Verificar stock antes de registrar la venta
+    foreach ($items as $item) {
+        $stmt = $conn->prepare("SELECT cantidad FROM productos WHERE codigo_producto = ?");
+        $stmt->bind_param("s", $item['codigo']);
+        $stmt->execute();
+        $stmt->bind_result($stock);
+        if ($stmt->fetch()) {
+            if (intval($item['cantidad']) > $stock) {
+                $_SESSION['vender_msg'] = "No hay suficiente stock para el producto {$item['codigo']}. Disponible: $stock.";
+                $stmt->close();
+                header('Location: vender.php');
+                exit;
+            }
+        }
+        $stmt->close();
+    }
+
     // Registrar venta (cabecera)
     $stmt = $conn->prepare("INSERT INTO ventas (fecha, metodo_pago_id) VALUES (NOW(), ?)");
     $stmt->bind_param("i", $metodo_pago_id);

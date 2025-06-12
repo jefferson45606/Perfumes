@@ -265,6 +265,13 @@ function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = 
       input.type = 'text';
     }
 
+    // Hacer el campo Código solo lectura si estamos editando
+    if (campoNombre === 'Código' && datos) {
+      input.readOnly = true;
+      input.style.background = '#eee';
+      input.style.cursor = 'not-allowed';
+    }
+
     if (datos && campoNombre !== 'Imagen') {
       input.value = datos[campoNombre] || '';
     }
@@ -319,19 +326,45 @@ function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = 
     e.preventDefault();
     const nuevosDatos = {};
 
-    // Validar duplicado
     const nombreNuevo = inputs['Nombre'].value.trim().toLowerCase();
-    const productosExistentes = document.querySelectorAll('[data-producto]');
-    const nombreDuplicado = Array.from(productosExistentes).some(card => {
-      const prod = JSON.parse(card.dataset.producto);
-      const mismoNombre = prod['Nombre'].trim().toLowerCase() === nombreNuevo;
-      const esMismoProducto = card === card;
-      return mismoNombre && (!datos || !esMismoProducto);
-    });
+    const codigoNuevo = inputs['Código'].value.trim();
+    let nombreDuplicado = false;
+    let codigoDuplicado = false;
 
-    if (nombreDuplicado) {
-      alert("Ya existe un producto con ese nombre.");
-      return;
+    const productosExistentes = document.querySelectorAll('[data-producto]');
+    if (!datos) { // Solo al crear, no al editar
+      productosExistentes.forEach(card => {
+        const prod = JSON.parse(card.dataset.producto);
+        if ((prod['Nombre'] || '').trim().toLowerCase() === nombreNuevo) {
+          nombreDuplicado = true;
+        }
+        if ((prod['Código'] || prod['codigo_producto']) === codigoNuevo) {
+          codigoDuplicado = true;
+        }
+      });
+      if (nombreDuplicado) {
+        alert("Ya existe un producto con ese nombre.");
+        return;
+      }
+      if (codigoDuplicado) {
+        alert("Ya existe un producto con ese código.");
+        return;
+      }
+    } else {
+      // Validación al editar (ya la tienes)
+      const codigoActual = datos['Código'] || datos['codigo_producto'];
+      productosExistentes.forEach(card => {
+        const prod = JSON.parse(card.dataset.producto);
+        const mismoNombre = (prod['Nombre'] || '').trim().toLowerCase() === nombreNuevo;
+        const esOtroProducto = (prod['Código'] || prod['codigo_producto']) !== codigoActual;
+        if (mismoNombre && esOtroProducto) {
+          nombreDuplicado = true;
+        }
+      });
+      if (nombreDuplicado) {
+        alert("Ya existe otro producto con ese nombre.");
+        return;
+      }
     }
 
     campos.forEach(c => {
@@ -348,7 +381,6 @@ function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = 
     for (const key in nuevosDatos) {
       formData.append(key, nuevosDatos[key]);
     }
-    // Corregido: Siempre envía el ID de la categoría seleccionada
     formData.append('categoria_id', categoriaSeleccionadaId);
 
     if (file) {
@@ -357,7 +389,6 @@ function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = 
       formData.append('ImagenExistente', datos['Imagen']);
     }
 
-    // Corregido: Envía correctamente los valores de recarga_100ml
     formData.append('precio_30ml', inputs['Precio 30ml'].value.trim());
     formData.append('precio_60ml', inputs['Precio 60ml'].value.trim());
     formData.append('precio_100ml', inputs['Precio 100ml'].value.trim());

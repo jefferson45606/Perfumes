@@ -152,7 +152,7 @@ include 'includes/conexion.php';
         let productData = null; //aquí guardaremos datos del producto traidos de la API
         let items = [];         //array donde acumulamos los productos agregados
 
-        //esta funcionreinicia campos cuando cambias de producto
+        //esta funcion reinicia campos cuando cambias de producto
         function resetForm() {
             tipoSelect.value = '';         //selecciona el primer option vacío
             cantidadInput.value = '';      //limpia la cantidad

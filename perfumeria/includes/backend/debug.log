@@ -1023,3 +1023,311 @@ Array
     [recarga_60ml] => 23900
     [recarga_100ml] => 44600
 )
+Array
+(
+    [Código] => 001
+    [Nombre] => NAUTILUS
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana
+    [Cantidad] => -2
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 766
+    [Nombre] => Carta
+    [Inspiración] => by Paco Rabanne
+    [Casa] => Nautica Voyage
+    [Descripción] => Inspirado en una manzana de caramelo y con notas de limón, gardenia y madera de cedro,
+    [Cantidad] => 5
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 30000
+    [Precio_100ml] => 40000
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [precio_30ml] => 22100
+    [precio_60ml] => 30000
+    [precio_100ml] => 40000
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 001
+    [Nombre] => maria
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana
+    [Cantidad] => 5
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [ImagenExistente] => ../../uploads/6846da7a586d9_One millon.jfif
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 369
+    [Nombre] => maria
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana
+    [Cantidad] => 5
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [ImagenExistente] => ../../uploads/6846da7a586d9_One millon.jfif
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+    [Código] => 001
+    [Nombre] => NIÑA
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana
+    [Cantidad] => 5
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [ImagenExistente] => ../../uploads/6846da7a586d9_One millon.jfif
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 001
+    [Nombre] => fragancia
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana
+    [Cantidad] => 5
+    [Precio] => 2000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [ImagenExistente] => ../../uploads/6846da7a586d9_One millon.jfif
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 77
+    [Nombre] => v
+    [Inspiración] => mc
+    [Casa] => karma
+    [Descripción] => z
+    [Cantidad] => 2
+    [Precio] => 99999
+    [Precio_30ml] => 999999
+    [Precio_60ml] => 99999999
+    [Precio_100ml] => 9999999999
+    [Recarga_30ml] => 99999
+    [Recarga_60ml] => 9999999
+    [Recarga_100ml] => 99999999999
+    [categoria_id] => 3
+    [precio_30ml] => 999999
+    [precio_60ml] => 99999999
+    [precio_100ml] => 9999999999
+    [recarga_30ml] => 99999
+    [recarga_60ml] => 9999999
+    [recarga_100ml] => 99999999999
+)
+Array
+(
+    [Código] => 77
+    [Nombre] => v
+    [Inspiración] => mc
+    [Casa] => karma
+    [Descripción] => z
+    [Cantidad] => 2
+    [Precio] => 99999
+    [Precio_30ml] => 999999
+    [Precio_60ml] => 99999999
+    [Precio_100ml] => 9999999999
+    [Recarga_30ml] => 99999
+    [Recarga_60ml] => 9999999
+    [Recarga_100ml] => 99999999999
+    [categoria_id] => 3
+    [precio_30ml] => 999999
+    [precio_60ml] => 99999999
+    [precio_100ml] => 9999999999
+    [recarga_30ml] => 99999
+    [recarga_60ml] => 9999999
+    [recarga_100ml] => 99999999999
+)
+Array
+(
+    [Código] => 77
+    [Nombre] => v
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => Nautica Voyage Eau De Toilette para hombre, aroma fresco, romántico y frutal, notas de madera y acuáticas de manzana, loto indio, madera de cedro y almizcle, ideal para uso diario, 3.3 fl oz (100 ml)
+    [Cantidad] => 2
+    [Precio] => 10000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 15000
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 15000
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 002
+    [Nombre] => NIÑA
+    [Inspiración] => by Nina Ricci
+    [Casa] => Nina
+    [Descripción] => Inspirado en una manzana de caramelo y con notas de limón, gardenia y madera de cedro,
+    [Cantidad] => 66
+    [Precio] => 5000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 2
+    [ImagenExistente] => ../../uploads/6846bfc274e29_Niña.jfif
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 424242
+    [Nombre] => cagdfs
+    [Inspiración] => asdsdas
+    [Casa] => asdsdfsdf
+    [Descripción] => aswwawd
+    [Cantidad] => 452454
+    [Precio] => 48645
+    [Precio_30ml] => 48645
+    [Precio_60ml] => 48456
+    [Precio_100ml] => 74568
+    [Recarga_30ml] => 4564864
+    [Recarga_60ml] => 8458648
+    [Recarga_100ml] => 5134565
+    [categoria_id] => 3
+    [precio_30ml] => 48645
+    [precio_60ml] => 48456
+    [precio_100ml] => 74568
+    [recarga_30ml] => 4564864
+    [recarga_60ml] => 8458648
+    [recarga_100ml] => 5134565
+)
+Array
+(
+    [Código] => 78
+    [Nombre] => sofia
+    [Inspiración] => by Nauica
+    [Casa] => Nautica Voyage
+    [Descripción] => grdg
+    [Cantidad] => 2
+    [Precio] => -5000
+    [Precio_30ml] => -20000
+    [Precio_60ml] => -30000
+    [Precio_100ml] => -40000
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 25000
+    [Recarga_100ml] => 35000
+    [categoria_id] => 5
+    [precio_30ml] => -20000
+    [precio_60ml] => -30000
+    [precio_100ml] => -40000
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 25000
+    [recarga_100ml] => 35000
+)

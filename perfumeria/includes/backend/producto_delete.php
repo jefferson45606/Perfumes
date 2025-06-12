@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: application/json');
+header('Content-Type: application/json'); //elimina la cabecera de tipo de contenido JSON, osea el recuadro del producto
 require_once '../conexiones.php';
 $conn = conectar();
 
