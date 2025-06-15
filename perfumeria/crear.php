@@ -244,7 +244,6 @@ function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = 
 
   campos.forEach(campo => {
     const campoNombre = typeof campo === 'string' ? campo : campo.nombre;
-
     const label = document.createElement('label');
     label.textContent = campoNombre;
     if (campoNombre === 'Imagen') {
@@ -259,8 +258,19 @@ function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = 
       input.type = 'file';
       input.accept = 'image/*';
       input.required = !datos; // si estamos editando, la imagen no es obligatoria
-    } else if (campoNombre === 'Cantidad') {
+    } else if (
+      campoNombre === 'Cantidad' ||
+      campoNombre === 'Precio' ||
+      campoNombre === 'Precio 30ml' ||
+      campoNombre === 'Precio 60ml' ||
+      campoNombre === 'Precio 100ml' ||
+      campoNombre === 'Recarga 30ml' ||
+      campoNombre === 'Recarga 60ml' ||
+      campoNombre === 'Recarga 100ml'
+    ) {
       input.type = 'number';
+      input.min = 0; // <-- No permite valores negativos
+      input.step = "any";
     } else {
       input.type = 'text';
     }
@@ -286,7 +296,7 @@ function abrirFormulario(categoriaNombre, contenedorPadre, datos = null, card = 
       hidden.value = datos['Imagen'];
       form.appendChild(hidden);
 
-      // Mostrar nome do arquivo existente DEPOIS do input
+      // Mostrar el nombre del archivo existente despues de la entrda
       input.style.display = 'inline-block';
       const nombreArchivo = document.createElement('span');
       nombreArchivo.textContent = ' - ' + datos['Imagen'].split('/').pop();

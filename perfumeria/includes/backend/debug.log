@@ -1331,3 +1331,170 @@ Array
     [recarga_60ml] => 25000
     [recarga_100ml] => 35000
 )
+Array
+(
+    [Código] => 8
+    [Nombre] => a
+    [Inspiración] => a
+    [Casa] => a
+    [Descripción] => asasassasass
+    [Cantidad] => 1
+    [Precio] => 10000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 8
+    [Nombre] => a
+    [Inspiración] => a
+    [Casa] => a
+    [Descripción] => asasassasassasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasds
+    [Cantidad] => 1
+    [Precio] => 10000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [ImagenExistente] => ../../uploads/684e220ca266d_crea.png
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 8
+    [Nombre] => a
+    [Inspiración] => a
+    [Casa] => a
+    [Descripción] => asasassasassasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdsasjdjhgasghdas ashdgjhagsjhgjhasdghasd ahsdghjasgdhagshjdg ashdgjhasgdhjghas ajshdjkahsudas
+    [Cantidad] => 1
+    [Precio] => 10000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [ImagenExistente] => ../../uploads/684e220ca266d_crea.png
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 8
+    [Nombre] => a
+    [Inspiración] => a
+    [Casa] => a
+    [Descripción] => es una escencia con olores agradables para las personas
+    [Cantidad] => 1
+    [Precio] => 10000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [ImagenExistente] => ../../uploads/684e220ca266d_crea.png
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 8
+    [Nombre] => a
+    [Inspiración] => a
+    [Casa] => a
+    [Descripción] => es una escencia con olores agradables para las personas
+    [Cantidad] => 1
+    [Precio] => -10000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [ImagenExistente] => ../../uploads/684e220ca266d_crea.png
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 8
+    [Nombre] => a
+    [Inspiración] => a
+    [Casa] => a
+    [Descripción] => es una escencia con olores agradables para las personas
+    [Cantidad] => 1
+    [Precio] => 10000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [ImagenExistente] => ../../uploads/684e220ca266d_crea.png
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)
+Array
+(
+    [Código] => 8
+    [Nombre] => a
+    [Inspiración] => a
+    [Casa] => a
+    [Descripción] => es una escencia con olores agradables para las personas
+    [Cantidad] => 1
+    [Precio] => 10000
+    [Precio_30ml] => 22100
+    [Precio_60ml] => 33900
+    [Precio_100ml] => 58400
+    [Recarga_30ml] => 13100
+    [Recarga_60ml] => 23900
+    [Recarga_100ml] => 44600
+    [categoria_id] => 3
+    [ImagenExistente] => ../../uploads/684e220ca266d_crea.png
+    [precio_30ml] => 22100
+    [precio_60ml] => 33900
+    [precio_100ml] => 58400
+    [recarga_30ml] => 13100
+    [recarga_60ml] => 23900
+    [recarga_100ml] => 44600
+)

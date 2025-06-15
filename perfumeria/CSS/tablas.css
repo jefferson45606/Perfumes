@@ -304,3 +304,13 @@ tbody tr:hover {
 .close:hover {
     color: #f4b6c2; /* cambia el color del botón cerrar al pasar el mouse por encima */
 }
+
+
+.descripcion-corta,
+.descripcion-completa {
+    display: block;
+    white-space: pre-wrap;  /* permite saltos de línea y wrap */
+    word-break: break-word; /* parte palabras muy largas si es necesario */
+    max-width: 300px;       /* límite opcional, ajusta según tu diseño */
+    margin-bottom: 5px;
+}

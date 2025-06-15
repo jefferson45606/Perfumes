@@ -77,26 +77,41 @@ while ($row = $result->fetch_assoc()) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($productos as $prod): ?>
-                        <!-- Cada fila representa un producto. El atributo data-categoria nos ayuda a filtrar con JS -->
-                        <tr data-categoria="<?= htmlspecialchars($prod['nombre_categoria']) ?>">
-                            <td><?= htmlspecialchars($prod['codigo_producto']) ?></td>
-                            <td>
-                                <?php if ($prod['imagen_url']): ?>
-                                    <!-- Mostramos la imagen si existe, con tamaño y cursor para indicar que se puede ampliar -->
-                                    <img src="<?= htmlspecialchars($prod['imagen_url']) ?>" alt="img" style="max-width:60px;cursor:pointer;">
-                                <?php else: ?>
-                                    <!-- Si no hay imagen, mostramos un texto alternativo -->
-                                    <span>Sin imagen</span>
-                                <?php endif; ?>
-                            </td>
-                            <td><?= htmlspecialchars($prod['nombre_producto']) ?></td>
-                            <td><?= htmlspecialchars($prod['inspiracion']) ?></td>
-                            <td><?= htmlspecialchars($prod['casa']) ?></td>
-                            <td><?= htmlspecialchars($prod['descripcion']) ?></td>
-                        </tr>
-                    <?php endforeach; ?>
+                <?php foreach ($productos as $prod): ?>
+                    <tr data-categoria="<?= htmlspecialchars($prod['nombre_categoria']) ?>">
+                        <td><?= htmlspecialchars($prod['codigo_producto']) ?></td>
+                        <td>
+                            <?php if ($prod['imagen_url']): ?>
+                                <?php
+                                    $imgSrc = $prod['imagen_url'];
+                                    // Si la ruta no contiene 'uploads/', prepéndelo
+                                    if (strpos($imgSrc, 'uploads/') !== 0 && !preg_match('#^https?://#', $imgSrc)) {
+                                        $imgSrc = '..' . ltrim($imgSrc, '/\\');
+                                    }
+                                ?>
+                                <img src="<?= htmlspecialchars($imgSrc) ?>" alt="img" style="max-width:60px;cursor:pointer;">
+                            <?php else: ?>
+                                <span>Sin imagen</span>
+                            <?php endif; ?>
+                        </td>
+                        <td><?= htmlspecialchars($prod['nombre_producto']) ?></td>
+                        <td><?= htmlspecialchars($prod['inspiracion']) ?></td>
+                        <td><?= htmlspecialchars($prod['casa']) ?></td>
+                        <td>
+                            <span class="descripcion-corta">
+                                <?= htmlspecialchars(mb_strimwidth($prod['descripcion'], 0, 10, '...')) ?>
+                            </span>
+                            <?php if (mb_strlen($prod['descripcion']) > 50): ?>
+                                <span class="descripcion-completa" style="display:none;">
+                                    <?= htmlspecialchars($prod['descripcion']) ?>
+                                </span>
+                                <button class="ver-mas-btn" onclick="alternarDescripcion(this); return false;">Ver más</button>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
                 </tbody>
+
             </table>
         </div>
         <!-- Botón para cerrar sesión -->
@@ -124,6 +139,23 @@ function filtrar(categoria) {
         }
     });
 }
+
+
+function alternarDescripcion(btn) {
+    const td = btn.parentElement;
+    const corta = td.querySelector('.descripcion-corta');
+    const completa = td.querySelector('.descripcion-completa');
+    if (completa.style.display === "none") {
+        corta.style.display = "none";
+        completa.style.display = "";
+        btn.textContent = "Ocultar";
+    } else {
+        corta.style.display = "";
+        completa.style.display = "none";
+        btn.textContent = "Ver más";
+    }
+}
+
 
 // Modal de imagen ampliada al hacer click en una imagen
 document.querySelectorAll('#tablaPerfumes tbody tr td img').forEach(img => {
