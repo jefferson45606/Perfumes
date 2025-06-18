@@ -98,7 +98,7 @@ while ($row = $result->fetch_assoc()) {
                         <td><?= htmlspecialchars($prod['inspiracion']) ?></td>
                         <td><?= htmlspecialchars($prod['casa']) ?></td>
                         <td>
-                            <span class="descripcion-corta">
+                            <span class="descripcion-corta"> <!--- esta clase es la que se usa para mostrar la descripción corta -->
                                 <?= htmlspecialchars(mb_strimwidth($prod['descripcion'], 0, 10, '...')) ?>
                             </span>
                             <?php if (mb_strlen($prod['descripcion']) > 50): ?>
